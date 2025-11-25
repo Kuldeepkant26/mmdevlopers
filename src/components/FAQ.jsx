@@ -56,8 +56,8 @@ const FAQ = () => {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.1,
+                staggerChildren: 0.08,
+                delayChildren: 0.03,
             },
         },
     };

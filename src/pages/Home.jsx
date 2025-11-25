@@ -8,6 +8,8 @@ import InteriorShowcase from '../components/InteriorShowcase';
 import Testimonials from '../components/Testimonials';
 import CTA from '../components/CTA';
 import FAQ from '../components/FAQ';
+import HeroStats from '../components/HeroStats';
+import Sustainability from '../components/Sustainability';
 import { FaTwitter, FaFacebookF, FaInstagram } from 'react-icons/fa';
 import homeheroImage from '../assets/homehero3.jpg';
 import building3 from '../assets/building3.jpeg';
@@ -393,6 +395,10 @@ const Home = () => {
                     <AboutUs></AboutUs>
                     <WebSaaSDev></WebSaaSDev>
                     <InteriorShowcase></InteriorShowcase>
+
+                    {/* New premium sections added - retain existing flow */}
+                    <HeroStats />
+                    <Sustainability />
 
 
                     {/* Philosophy Section */}

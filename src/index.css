@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+/* Client Brand Colors - Selected Shades */
+:root {
+  /* Primary Colors */
+  --color-navy-blue: #00123A;
+  --color-yellow-gold: #F8C64B;
+  --color-forest-green: #0C6C0B;
+  --color-dark-gray: #373737;
+  --color-light-gray: #D6D6D6;
+  --color-light-yellow: #FFD368;
+}
+
 /* Prevent horizontal scroll */
 html, body {
   margin: 0;

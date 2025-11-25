@@ -39,7 +39,7 @@
   left: -40px;
   width: 160px;
   height: 160px;
-  color: #2d2d2d;
+  color: var(--color-navy-blue);
   opacity: 0.15;
   z-index: 1;
   animation: rotateIcon 20s linear infinite;
@@ -99,13 +99,13 @@
   font-size: clamp(42px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.2;
-  color: #2d2d2d;
+  color: var(--color-dark-gray);
   margin: 0;
   letter-spacing: -0.02em;
 }
 
 .aboutus-section .aboutus-right .gradient-accent {
-  background: linear-gradient(135deg, #2d2d2d 0%, #5a5a5a 100%);
+  background: linear-gradient(135deg, var(--color-yellow-gold) 0%, var(--color-forest-green) 90%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -123,7 +123,7 @@
   font-size: 15px;
   font-weight: 400;
   line-height: 2;
-  color: #5a5a5a;
+  color: var(--color-dark-gray);
   margin: 0;
 }
 
@@ -135,19 +135,19 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: #2d2d2d;
-  border: none;
+  background: var(--color-navy-blue);
+  border: 1px solid rgba(248, 198, 75, 0.6);
   cursor: pointer;
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 18, 58, 0.15);
 }
 
 .aboutus-section .aboutus-right .circle-btn:hover {
-  background: #000000;
+  background: #050f2e;
   transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 35px rgba(0, 18, 58, 0.22);
 }
 
 .aboutus-section .aboutus-right .circle-btn .btn-line {
@@ -157,7 +157,7 @@
   transform: translate(-50%, -50%);
   width: 40px;
   height: 2px;
-  background: #ffffff;
+  background: var(--color-light-yellow);
 }
 
 .aboutus-section .aboutus-right .circle-btn .btn-line::before {
@@ -168,7 +168,7 @@
   transform: translate(-50%, -50%) rotate(90deg);
   width: 40px;
   height: 2px;
-  background: #ffffff;
+  background: var(--color-light-yellow);
 }
 
 /* Animations */

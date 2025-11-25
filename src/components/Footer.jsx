@@ -9,7 +9,7 @@ import {
     FaPhone,
     FaMapMarkerAlt
 } from 'react-icons/fa';
-import logoIcon from '../assets/ourlogo.png';
+import logoIcon from '../assets/mm-logo.png';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -21,8 +21,7 @@ const Footer = () => {
                 <div className="footer-top">
                     <div className="footer-brand">
                         <div className="footer-logo">
-                            <img src={logoIcon} alt="MMD Logo" className="footer-logo-icon" />
-                            <span className="logo-text-footer">MMD</span>
+                            <img src={logoIcon} alt="MM Developers Logo" className="footer-logo-icon" />
                         </div>
                         <p className="footer-tagline">
                             Crafting premium digital experiences with innovation and excellence. We bring your vision to life with cutting-edge solutions.

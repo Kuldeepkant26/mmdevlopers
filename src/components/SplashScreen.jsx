@@ -1,6 +1,6 @@
 import React from 'react'
 import '../css/SplashScreen.css'
-import FullLogo from '../assets/FullLogo_Transparent.png'
+import FullLogo from '../assets/mm-logo.png'
 
 const SplashScreen = ({ exiting = false }) => {
   return (

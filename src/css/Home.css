@@ -107,7 +107,7 @@
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.3em;
-    color: #2d2d2d;
+    color: var(--color-forest-green);
     margin: 0 0 18px 0;
     text-transform: uppercase;
 }
@@ -115,7 +115,8 @@
 .home-page .home-hero-screenshot-line {
     width: 120px;
     height: 3px;
-    background-color: #2d2d2d;
+    background: linear-gradient(90deg, var(--color-yellow-gold) 0%, var(--color-light-yellow) 100%);
+    box-shadow: 0 0 12px rgba(248, 198, 75, 0.35);
     margin: 0;
 }
 
@@ -145,7 +146,7 @@
     font-size: 15px;
     font-weight: 400;
     line-height: 2;
-    color: #5a5a5a !important;
+    color: #464646 !important;
     margin: 0 0 40px 0;
     max-width: 540px;
 }
@@ -157,18 +158,18 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     padding: 18px 45px;
-    background-color: #2d2d2d;
+    background-color: var(--color-navy-blue);
     color: #ffffff;
-    border: none;
+    border: 1px solid rgba(248, 198, 75, 0.7);
     border-radius: 0;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 18px rgba(0, 18, 58, 0.18);
 }
 
 .home-page .home-hero-screenshot-btn:hover {
-    background-color: #000000;
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    background-color: #030d2c;
+    box-shadow: 0 8px 28px rgba(0, 18, 58, 0.25);
     transform: translateY(-2px);
 }
 
@@ -193,6 +194,30 @@
     overflow: hidden;
 }
 
+.home-page .home-hero-screenshot-left::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 60px;
+    width: 64px;
+    height: 64px;
+    border: 1px solid rgba(248, 198, 75, 0.45);
+    border-radius: 50%;
+    transform: translateX(-40%);
+    opacity: 0.7;
+}
+
+.home-page .home-hero-screenshot-left::after {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 150px;
+    width: 1px;
+    height: 90px;
+    background: linear-gradient(180deg, transparent 0%, var(--color-forest-green) 60%, transparent 100%);
+    opacity: 0.4;
+}
+
 .home-page .home-hero-screenshot-image {
     position: absolute;
     top: 0;
@@ -214,13 +239,13 @@
 /* Hero Text Animations */
 .home-page .hero-title-text {
     display: inline-block;
-    color: #2d2d2d !important;
+    color: #1a1a1a !important;
     animation: heroTextFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .home-page .hero-description-text {
     display: inline-block;
-    color: #5a5a5a !important;
+    color: #4a4a4a !important;
     animation: heroTextFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
 }
 
@@ -249,7 +274,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(248, 198, 75, 0.45);
     background: transparent;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -261,7 +286,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: #ffffff;
+    background: var(--color-light-yellow);
     border-radius: 50%;
     transform: scale(0);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -272,7 +297,7 @@
 }
 
 .home-page .carousel-indicator:hover {
-    border-color: rgba(255, 255, 255, 0.9);
+    border-color: var(--color-yellow-gold);
     transform: scale(1.15);
 }
 
@@ -642,7 +667,7 @@
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #2d2d2d;
+    color: var(--color-forest-green);
     margin-bottom: 1rem;
 }
 
@@ -652,7 +677,7 @@
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
-    color: #2d2d2d;
+    color: var(--color-dark-gray);
     margin-bottom: 1.5rem;
 }
 
@@ -780,13 +805,13 @@
 }
 
 .home-page .home-dot.active {
-    background: linear-gradient(135deg, #A8BCC7, #6B8FA3);
+    background: linear-gradient(135deg, var(--color-yellow-gold), var(--color-forest-green));
     width: 30px;
     border-radius: 5px;
 }
 
 .home-page .home-dot:hover {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(248, 198, 75, 0.55);
 }
 
 .home-page .home-image-overlay {
@@ -801,7 +826,7 @@
 
 /* Services Section */
 .home-page .home-services {
-    padding: 0 2rem 8rem;
+    padding: 4rem 2rem 8rem;
     background: #EAEAEA;
 }
 
@@ -814,7 +839,7 @@
 .home-page .home-services-subtitle {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.125rem;
-    color: #5a5a5a;
+    color: #4a4a4a;
     font-weight: 400;
     line-height: 1.8;
 }
@@ -830,12 +855,12 @@
 .home-page .home-service-card {
     padding: 3rem 2rem;
     background: #ffffff;
-    border: 1px solid rgba(45, 45, 45, 0.1);
+    border: 1px solid rgba(0, 18, 58, 0.08);
     border-radius: 12px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 18px rgba(0, 18, 58, 0.08);
 }
 
 .home-page .home-service-card::before {
@@ -845,7 +870,7 @@
     left: 0;
     width: 0;
     height: 3px;
-    background: linear-gradient(135deg, #2d2d2d 0%, #5a5a5a 100%);
+    background: linear-gradient(135deg, var(--color-yellow-gold) 0%, var(--color-navy-blue) 100%);
     transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 12px 12px 0 0;
 }
@@ -856,15 +881,15 @@
 
 .home-page .home-service-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(45, 45, 45, 0.2);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 18, 58, 0.2);
+    box-shadow: 0 20px 45px rgba(0, 18, 58, 0.15);
 }
 
 .home-page .home-service-icon {
     width: 60px;
     height: 60px;
     margin: 0 auto 1.5rem;
-    color: #2d2d2d;
+    color: var(--color-navy-blue);
     transition: all 0.3s ease;
 }
 
@@ -875,7 +900,7 @@
 
 .home-page .home-service-card:hover .home-service-icon {
     transform: scale(1.15);
-    color: #000000;
+    color: var(--color-forest-green);
 }
 
 .home-page .home-service-title {
@@ -1493,7 +1518,7 @@
     }
 
     .home-page .home-section-title {
-        font-size: 1.75rem;
+        color: var(--color-dark-gray);
     }
 
     .home-page .home-project-info {
@@ -1502,6 +1527,7 @@
 
     .home-page .home-service-card {
         padding: 2rem 1.5rem;
+        color: #4a4a4a;
     }
 
     /* Featured Designs - Extra Small Mobile */
