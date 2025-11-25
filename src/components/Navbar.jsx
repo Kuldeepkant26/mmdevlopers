@@ -6,6 +6,7 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
+    const [showMaintenancePopup, setShowMaintenancePopup] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -22,6 +23,17 @@ const Navbar = () => {
 
     const toggleDropdown = (menu) => {
         setOpenDropdown(openDropdown === menu ? null : menu);
+    };
+
+    const handleNavClick = (e, itemName) => {
+        if (itemName !== 'HOME') {
+            e.preventDefault();
+            setShowMaintenancePopup(true);
+        }
+    };
+
+    const closeMaintenancePopup = () => {
+        setShowMaintenancePopup(false);
     };
 
     // Only 3 items shown in navbar on larger screens
@@ -85,7 +97,11 @@ const Navbar = () => {
                     <ul className="navbar-menu">
                         {navbarItems.map((item, index) => (
                             <li key={index} className="navbar-item">
-                                <a href={item.path} className="navbar-link">
+                                <a 
+                                    href={item.path} 
+                                    className="navbar-link"
+                                    onClick={(e) => handleNavClick(e, item.name)}
+                                >
                                     {item.name}
                                 </a>
                             </li>
@@ -129,6 +145,8 @@ const Navbar = () => {
                                     if (item.submenu) {
                                         e.preventDefault();
                                         toggleDropdown(item.name);
+                                    } else {
+                                        handleNavClick(e, item.name);
                                     }
                                 }}
                             >
@@ -142,7 +160,11 @@ const Navbar = () => {
                             {item.submenu && (
                                 <div className={`sidebar-submenu ${openDropdown === item.name ? 'open' : ''}`}>
                                     {item.submenu.map((subitem, subindex) => (
-                                        <a key={subindex} href={subitem.path}>
+                                        <a 
+                                            key={subindex} 
+                                            href={subitem.path}
+                                            onClick={(e) => handleNavClick(e, subitem.name)}
+                                        >
                                             {subitem.name}
                                         </a>
                                     ))}
@@ -152,6 +174,25 @@ const Navbar = () => {
                     ))}
                 </nav>
             </aside>
+
+            {/* Maintenance Popup */}
+            {showMaintenancePopup && (
+                <div className="maintenance-overlay" onClick={closeMaintenancePopup}>
+                    <div className="maintenance-popup" onClick={(e) => e.stopPropagation()}>
+                        <div className="maintenance-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </div>
+                        <h2>Under Maintenance</h2>
+                        <p>This page is currently under construction. We're working hard to bring you an amazing experience!</p>
+                        <button className="maintenance-close-btn" onClick={closeMaintenancePopup}>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </>
     );
 };
