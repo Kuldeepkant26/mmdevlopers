@@ -74,7 +74,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #EAEAEA;
+    background: #FFFFFF;
     padding: 0;
     overflow: hidden;
 }
@@ -832,7 +832,7 @@
 /* Services Section */
 .home-page .home-services {
     padding: 4rem 2rem 8rem;
-    background: #EAEAEA;
+    background: #FFFFFF;
 }
 
 .home-page .home-services-header {
