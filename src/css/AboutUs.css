@@ -99,7 +99,10 @@
   font-size: clamp(42px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.2;
-  color: var(--color-dark-gray);
+  background: linear-gradient(135deg, var(--color-yellow-gold) 0%, var(--color-forest-green) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
   letter-spacing: -0.02em;
 }

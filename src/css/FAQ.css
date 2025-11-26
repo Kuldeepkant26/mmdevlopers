@@ -45,7 +45,10 @@
   font-family: 'Playfair Display', serif;
   font-size: clamp(36px, 5vw, 56px);
   font-weight: 700;
-  color: var(--color-dark-gray);
+  background: linear-gradient(135deg, var(--color-yellow-gold) 0%, var(--color-forest-green) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 20px;
   letter-spacing: -0.02em;
 }

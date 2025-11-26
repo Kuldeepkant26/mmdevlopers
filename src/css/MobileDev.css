@@ -62,7 +62,10 @@
   font-size: clamp(36px, 4vw, 56px);
   font-weight: 700;
   line-height: 1.2;
-  color: var(--color-dark-gray);
+  background: linear-gradient(135deg, var(--color-yellow-gold) 0%, var(--color-forest-green) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
   letter-spacing: -0.02em;
 }
@@ -217,7 +220,10 @@
   font-size: clamp(28px, 3vw, 42px);
   font-weight: 700;
   line-height: 1.3;
-  color: var(--color-dark-gray);
+  background: linear-gradient(135deg, var(--color-yellow-gold) 0%, var(--color-forest-green) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
   letter-spacing: -0.01em;
 }

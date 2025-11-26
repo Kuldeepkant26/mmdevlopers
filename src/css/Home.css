@@ -682,7 +682,10 @@
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
-    color: var(--color-dark-gray);
+    background: linear-gradient(135deg, var(--color-yellow-gold) 0%, var(--color-forest-green) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
 }
 
