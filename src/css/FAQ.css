@@ -60,7 +60,7 @@
 .faq-section .faq-subtitle {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  color: #4a4a4a;
+  color: var(--color-dark-gray);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.8;
@@ -78,6 +78,12 @@
   background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
+  border-left: 3px solid var(--color-yellow-gold);
+  transition: border-color 0.3s ease;
+}
+
+.faq-section .faq-item:hover {
+  border-left-color: var(--color-forest-green);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
 }

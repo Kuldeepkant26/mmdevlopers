@@ -145,9 +145,9 @@
 }
 
 .aboutus-section .aboutus-right .circle-btn:hover {
-  background: #050f2e;
+  background: linear-gradient(135deg, var(--color-forest-green) 0%, var(--color-navy-blue) 100%);
   transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 10px 35px rgba(0, 18, 58, 0.22);
+  box-shadow: 0 10px 35px rgba(248, 198, 75, 0.3);
 }
 
 .aboutus-section .aboutus-right .circle-btn .btn-line {

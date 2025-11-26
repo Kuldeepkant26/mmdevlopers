@@ -162,7 +162,7 @@
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    color: #4a4a4a;
+    color: var(--color-dark-gray);
     font-size: 0.95rem;
 }
 
@@ -173,13 +173,13 @@
 }
 
 .footer-contact li a {
-    color: #4a4a4a;
+    color: var(--color-dark-gray);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .footer-contact li a:hover {
-    color: var(--color-yellow-gold);
+    color: var(--color-forest-green);
 }
 
 /* Divider */
@@ -205,7 +205,7 @@
 
 .footer-copyright {
     font-size: 0.9rem;
-    color: #999;
+    color: var(--color-light-gray);
     margin: 0;
 }
 
@@ -217,13 +217,13 @@
 
 .footer-legal a {
     font-size: 0.9rem;
-    color: #6a6a6a;
+    color: var(--color-dark-gray);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .footer-legal a:hover {
-    color: var(--color-yellow-gold);
+    color: var(--color-forest-green);
 }
 
 .legal-divider {

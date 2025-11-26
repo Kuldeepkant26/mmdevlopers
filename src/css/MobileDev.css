@@ -108,7 +108,7 @@
 }
 
 .mobiledev-feature-item:hover .feature-icon {
-  background: #020a22;
+  background: linear-gradient(135deg, var(--color-forest-green) 0%, var(--color-yellow-gold) 100%);
   transform: translateY(-3px);
 }
 
@@ -130,7 +130,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.8;
-  color: #4a4a4a;
+  color: var(--color-dark-gray);
   margin: 0;
 }
 
@@ -189,8 +189,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #ffffff;
-  color: #2d2d2d;
+  background: linear-gradient(135deg, var(--color-yellow-gold) 0%, var(--color-light-yellow) 100%);
+  color: var(--color-navy-blue);
   padding: 12px 24px;
   border-radius: 0;
   font-family: 'Montserrat', sans-serif;

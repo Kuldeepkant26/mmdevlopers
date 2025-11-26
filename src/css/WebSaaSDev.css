@@ -108,7 +108,7 @@
 }
 
 .websaas-section .websaas-feature-item:hover .feature-icon {
-  background: #020a22;
+  background: linear-gradient(135deg, var(--color-forest-green) 0%, var(--color-yellow-gold) 100%);
   transform: translateY(-3px);
 }
 
