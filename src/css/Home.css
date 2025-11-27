@@ -26,7 +26,7 @@
 }
 
 .home-page .home-section-2 {
-    background: #FFFFFF;
+    background: var(--surface-primary);
     min-height: 100vh;
     height: auto;
     border-top-left-radius: 30px;
@@ -74,7 +74,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #FFFFFF;
+    background: var(--surface-primary);
     padding: 0;
     overflow: hidden;
 }
@@ -245,7 +245,7 @@
 
 .home-page .hero-description-text {
     display: inline-block;
-    color: var(--color-dark-gray) !important;
+    color: var(--text-secondary) !important;
     animation: heroTextFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
 }
 
@@ -692,7 +692,7 @@
 /* Philosophy Section */
 .home-page .home-philosophy {
     padding: 8rem 2rem;
-    background: var(--background);
+        background: var(--surface-primary);
 }
 
 .home-page .home-philosophy-container {
@@ -835,7 +835,7 @@
 /* Services Section */
 .home-page .home-services {
     padding: 4rem 2rem 8rem;
-    background: #FFFFFF;
+    background: var(--surface-primary);
 }
 
 .home-page .home-services-header {
@@ -847,7 +847,7 @@
 .home-page .home-services-subtitle {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.125rem;
-    color: #4a4a4a;
+    color: var(--text-secondary);
     font-weight: 400;
     line-height: 1.8;
 }
@@ -932,7 +932,7 @@
 /* Featured Designs Section */
 .home-page .home-featured-designs {
     padding: 8rem 2rem;
-    background: var(--background);
+    background: var(--surface-primary);
 }
 
 .home-page .home-featured-header {
@@ -1204,7 +1204,7 @@
 
 .home-page .home-project-view {
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #A8BCC7 0%, #8AACC2 100%);
+        background: var(--surface-primary);
     color: #ffffff;
     border: none;
     font-size: 0.875rem;

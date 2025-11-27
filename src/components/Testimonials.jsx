@@ -20,45 +20,45 @@ const Testimonials = () => {
     const testimonials = [
         {
             id: 1,
-            name: 'Sarah Johnson',
+            name: 'Rajesh Sharma',
             role: 'Property Investor',
-            image: 'https://i.pravatar.cc/150?img=1',
+            image: 'https://i.pravatar.cc/150?img=12',
             rating: 5,
             text: 'MMD helped us find the perfect investment property. Their market knowledge and professional approach made the entire process seamless. We\'ve already seen a 25% ROI in just one year!',
             project: 'Investment Property'
         },
         {
             id: 2,
-            name: 'Michael Chen',
+            name: 'Priya Patel',
             role: 'Business Owner',
-            image: 'https://i.pravatar.cc/150?img=13',
+            image: 'https://i.pravatar.cc/150?img=5',
             rating: 5,
             text: 'Finding our dream commercial space was effortless with MMD. They understood our requirements perfectly and delivered beyond expectations. The location has been instrumental to our business growth.',
             project: 'Commercial Property'
         },
         {
             id: 3,
-            name: 'Emily Rodriguez',
+            name: 'Arjun Reddy',
             role: 'Homeowner',
-            image: 'https://i.pravatar.cc/150?img=5',
+            image: 'https://i.pravatar.cc/150?img=13',
             rating: 5,
             text: 'Working with MMD was a game-changer for our family. They found us the perfect home in our dream neighborhood within our budget. Professional, responsive, and truly caring!',
             project: 'Residential Purchase'
         },
         {
             id: 4,
-            name: 'David Williams',
+            name: 'Neha Kapoor',
             role: 'Real Estate Developer',
-            image: 'https://i.pravatar.cc/150?img=12',
+            image: 'https://i.pravatar.cc/150?img=1',
             rating: 5,
             text: 'MMD\'s expertise in luxury properties is unmatched. They helped us sell our premium developments at record prices. Their marketing strategy and client network are exceptional!',
             project: 'Luxury Development'
         },
         {
             id: 5,
-            name: 'Lisa Anderson',
+            name: 'Vikram Singh',
             role: 'First-time Buyer',
-            image: 'https://i.pravatar.cc/150?img=9',
+            image: 'https://i.pravatar.cc/150?img=15',
             rating: 5,
             text: 'As a first-time buyer, I was nervous about the process. MMD guided me through every step with patience and expertise. I found my perfect home and couldn\'t be happier!',
             project: 'First Home Purchase'

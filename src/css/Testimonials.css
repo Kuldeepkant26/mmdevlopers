@@ -4,7 +4,7 @@
 .testimonials-section {
   position: relative;
   min-height: 100vh;
-  background: #FFFFFF;
+  background: var(--surface-primary);
   padding: 80px 0;
   overflow: hidden;
 }
@@ -43,7 +43,7 @@
 .testimonials-section .testimonials-subtitle {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  color: #4a4a4a;
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.8;
@@ -59,7 +59,7 @@
 }
 
 .testimonials-section .slider-btn {
-  background: var(--color-navy-blue);
+  background: var(--color-navy-ink);
   color: #ffffff;
   border: 1px solid rgba(248, 198, 75, 0.4);
   width: 50px;
@@ -75,7 +75,7 @@
 }
 
 .testimonials-section .slider-btn:hover {
-  background: #020a22;
+  background: color-mix(in srgb, var(--color-navy-ink) 85%, #ffffff);
   transform: scale(1.1);
   box-shadow: 0 8px 24px rgba(0, 18, 58, 0.2);
 }
@@ -104,7 +104,7 @@
 }
 
 .testimonials-section .testimonial-card {
-  background: #ffffff;
+  background: var(--surface-card);
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
@@ -143,14 +143,14 @@
   font-family: 'Playfair Display', serif;
   font-size: 22px;
   font-weight: 700;
-  color: var(--color-dark-gray);
+  color: var(--text-primary);
   margin: 0 0 5px 0;
 }
 
 .testimonials-section .client-role {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
-  color: var(--color-dark-gray);
+  color: var(--text-secondary);
   margin: 0 0 10px 0;
 }
 
@@ -168,7 +168,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   line-height: 1.8;
-  color: var(--color-navy-blue);
+  color: var(--text-secondary);
   margin: 0 0 20px 0;
   font-style: italic;
 }
@@ -177,7 +177,7 @@
   font-family: 'Montserrat', sans-serif;
   display: inline-block;
   padding: 8px 16px;
-  background: var(--color-navy-blue);
+  background: var(--color-navy-ink);
   color: #ffffff;
   border-radius: 20px;
   border: 1px solid rgba(248, 198, 75, 0.45);

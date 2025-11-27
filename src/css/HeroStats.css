@@ -1,6 +1,6 @@
 /* Hero Stats - theme matched */
 .hero-stats-section {
-  background: #FFFFFF;
+  background: var(--surface-primary);
   padding: 64px 0;
 }
 .hero-stats-container {
@@ -22,7 +22,7 @@
   font-size: 28px;
 }
 .hero-stats-sub {
-  color: var(--color-dark-gray);
+  color: var(--text-secondary);
   margin-top: 8px;
   max-width: 520px;
   font-size: 18px;
@@ -57,7 +57,7 @@
 }
 .hero-stat-label {
   margin-top: 8px;
-  color: var(--color-dark-gray);
+  color: var(--text-secondary);
 }
 
 @media (max-width: 900px) {

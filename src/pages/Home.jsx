@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import '../css/Home.css';
+import '../css/Aesthetic.css';
 import Footer from '../components/Footer';
 import AboutUs from '../components/AboutUs';
 import MobileDev from '../components/MobileDev';
@@ -10,6 +12,8 @@ import CTA from '../components/CTA';
 import FAQ from '../components/FAQ';
 import HeroStats from '../components/HeroStats';
 import Sustainability from '../components/Sustainability';
+import PrestigeGallery from '../components/PrestigeGallery';
+import AestheticModal from '../components/AestheticModal';
 import { FaTwitter, FaFacebookF, FaInstagram } from 'react-icons/fa';
 import homeheroImage from '../assets/homehero3.jpg';
 import building3 from '../assets/building3.jpeg';
@@ -24,6 +28,8 @@ const Home = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [currentPhilosophyImage, setCurrentPhilosophyImage] = useState(0);
     const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedProject, setSelectedProject] = useState(null);
 
     const philosophyImages = [
         'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&q=80',
@@ -281,6 +287,154 @@ const Home = () => {
         }
     ];
 
+    // Aesthetic showcase project details
+    const aestheticProjects = [
+        {
+            id: 1,
+            title: 'Modern Elegance',
+            category: 'Luxury Residential',
+            subtitle: 'Where timeless design speaks volumes',
+            description: 'This contemporary masterpiece showcases the perfect harmony between modern architecture and natural elements. Floor-to-ceiling windows bathe the space in natural light, while premium materials and thoughtful details create an atmosphere of refined luxury.',
+            image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80',
+            badge: 'Featured',
+            features: [
+                'Open-concept living with panoramic views',
+                'Custom Italian marble and hardwood flooring',
+                'State-of-the-art smart home technology',
+                'Premium chef\'s kitchen with designer appliances',
+                'Spa-inspired master bathroom suite',
+                'Private outdoor terrace with infinity pool'
+            ],
+            stats: {
+                area: '5,800 sq ft',
+                location: 'Beverly Hills, CA',
+                year: '2024',
+                style: 'Contemporary Luxury'
+            }
+        },
+        {
+            id: 2,
+            title: 'Refined Living',
+            category: 'Modern Minimalist',
+            subtitle: 'Every detail perfected',
+            description: 'A celebration of minimalist design principles, this stunning space proves that less is indeed more. Clean lines, neutral tones, and carefully curated furnishings create a serene sanctuary that promotes tranquility and sophisticated living.',
+            image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
+            features: [
+                'Minimalist architectural design',
+                'Natural materials and organic textures',
+                'Hidden storage solutions throughout',
+                'Energy-efficient LED lighting system',
+                'Built-in entertainment center',
+                'Zen-inspired outdoor meditation area'
+            ],
+            stats: {
+                area: '3,200 sq ft',
+                location: 'Manhattan, NY',
+                year: '2024',
+                style: 'Scandinavian Modern'
+            }
+        },
+        {
+            id: 3,
+            title: 'Culinary Excellence',
+            category: 'Gourmet Kitchen',
+            subtitle: 'Design that inspires creativity',
+            description: 'The heart of this home is a chef\'s dream kitchen where functionality meets aesthetic perfection. Premium appliances, custom cabinetry, and a spacious island create the ideal environment for culinary creativity and entertaining.',
+            image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80',
+            features: [
+                'Professional-grade appliance suite',
+                'Custom white oak cabinetry',
+                'Waterfall edge quartz countertops',
+                'Wine storage and beverage center',
+                'Butler\'s pantry with prep kitchen',
+                'Breakfast nook with garden views'
+            ],
+            stats: {
+                area: '850 sq ft',
+                location: 'San Francisco, CA',
+                year: '2023',
+                style: 'Modern Transitional'
+            }
+        },
+        {
+            id: 4,
+            title: 'Sanctuary Spaces',
+            category: 'Master Bedroom',
+            subtitle: 'Where comfort meets luxury',
+            description: 'This luxurious master suite redefines the concept of personal sanctuary. Sophisticated design elements, premium textiles, and thoughtful lighting create an intimate retreat that balances elegance with ultimate comfort.',
+            image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80',
+            features: [
+                'Walk-in closet with custom organization',
+                'Fireplace with marble surround',
+                'Private balcony with mountain views',
+                'Spa-quality bathroom with soaking tub',
+                'Automated blackout window treatments',
+                'Built-in sound system'
+            ],
+            stats: {
+                area: '1,200 sq ft',
+                location: 'Aspen, CO',
+                year: '2024',
+                style: 'Alpine Luxury'
+            }
+        },
+        {
+            id: 5,
+            title: 'Inspired Interiors',
+            category: 'Living Spaces',
+            subtitle: 'Crafted to perfection',
+            description: 'An artfully designed living space that seamlessly blends form and function. Rich textures, sophisticated color palettes, and statement pieces create an environment that\'s both inviting and impressive.',
+            image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80',
+            features: [
+                'Double-height ceilings with skylights',
+                'Custom millwork and wainscoting',
+                'Art gallery lighting system',
+                'Built-in entertainment center',
+                'Gas fireplace with custom mantel',
+                'Seamless indoor-outdoor flow'
+            ],
+            stats: {
+                area: '2,400 sq ft',
+                location: 'Miami, FL',
+                year: '2023',
+                style: 'Coastal Contemporary'
+            }
+        },
+        {
+            id: 6,
+            title: 'Luxury Living',
+            category: 'Urban Penthouse',
+            subtitle: 'Elevated lifestyle at its finest',
+            description: 'Perched atop the city, this penthouse represents the pinnacle of urban luxury living. Expansive spaces, premium finishes, and breathtaking views combine to create an unparalleled residential experience.',
+            image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=80',
+            features: [
+                'Wraparound terrace with city views',
+                'Private elevator access',
+                'Smart home automation system',
+                'Wine cellar and tasting room',
+                'Home gym and yoga studio',
+                'Concierge and valet services'
+            ],
+            stats: {
+                area: '7,500 sq ft',
+                location: 'Dubai Marina',
+                year: '2024',
+                style: 'Ultra-Modern Luxury'
+            }
+        }
+    ];
+
+    // Modal handlers
+    const handleOpenModal = (project) => {
+        setSelectedProject(project);
+        setModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalOpen(false);
+        setSelectedProject(null);
+    };
+
     const services = [
         {
             icon: (
@@ -398,8 +552,177 @@ const Home = () => {
 
                     {/* New premium sections added - retain existing flow */}
                     <HeroStats />
+
+                    {/* Aesthetic Showcase Section */}
+                    <section className="aesthetic-section">
+                        <div className="aesthetic-container">
+                            <motion.div 
+                                className="aesthetic-header"
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8 }}
+                                viewport={{ once: true }}
+                            >
+                                <span className="home-section-label">Visual Excellence</span>
+                                <h2 className="home-section-title">Where Art Meets Architecture</h2>
+                                <p className="aesthetic-subtitle">
+                                    Experience the pinnacle of design sophistication through our curated collection of architectural masterpieces
+                                </p>
+                            </motion.div>
+
+                            <div className="aesthetic-grid">
+                                {/* Hero Card - Large Spotlight */}
+                                <motion.div 
+                                    className="aesthetic-card aesthetic-hero"
+                                    initial={{ opacity: 0, scale: 0.95, rotateY: -5 }}
+                                    whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+                                    transition={{ duration: 1, delay: 0.2 }}
+                                    viewport={{ once: true }}
+                                    onClick={() => handleOpenModal(aestheticProjects[0])}
+                                >
+                                    <div className="aesthetic-image-wrapper">
+                                        <img 
+                                            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80" 
+                                            alt="Luxury Interior" 
+                                            className="aesthetic-image"
+                                        />
+                                        <div className="aesthetic-overlay">
+                                            <div className="aesthetic-badge">Featured</div>
+                                            <div className="aesthetic-content">
+                                                <h3>Modern Elegance</h3>
+                                                <p>Timeless design that speaks volumes</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Vertical Showcase */}
+                                <motion.div 
+                                    className="aesthetic-card aesthetic-vertical"
+                                    initial={{ opacity: 0, x: 50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.9, delay: 0.3 }}
+                                    viewport={{ once: true }}
+                                    onClick={() => handleOpenModal(aestheticProjects[1])}
+                                >
+                                    <div className="aesthetic-image-wrapper">
+                                        <img 
+                                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" 
+                                            alt="Contemporary Space" 
+                                            className="aesthetic-image"
+                                        />
+                                        <div className="aesthetic-overlay">
+                                            <div className="aesthetic-content">
+                                                <h3>Refined Living</h3>
+                                                <p>Every detail perfected</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Square Accent */}
+                                <motion.div 
+                                    className="aesthetic-card aesthetic-square"
+                                    initial={{ opacity: 0, scale: 0.8, rotate: 3 }}
+                                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                                    transition={{ duration: 0.8, delay: 0.4 }}
+                                    viewport={{ once: true }}
+                                    onClick={() => handleOpenModal(aestheticProjects[2])}
+                                >
+                                    <div className="aesthetic-image-wrapper">
+                                        <img 
+                                            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80" 
+                                            alt="Premium Kitchen" 
+                                            className="aesthetic-image"
+                                        />
+                                        <div className="aesthetic-overlay">
+                                            <div className="aesthetic-content">
+                                                <h3>Culinary Excellence</h3>
+                                                <p>Design that inspires</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Wide Panorama */}
+                                <motion.div 
+                                    className="aesthetic-card aesthetic-panorama"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.9, delay: 0.5 }}
+                                    viewport={{ once: true }}
+                                    onClick={() => handleOpenModal(aestheticProjects[3])}
+                                >
+                                    <div className="aesthetic-image-wrapper">
+                                        <img 
+                                            src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80" 
+                                            alt="Luxury Bedroom" 
+                                            className="aesthetic-image"
+                                        />
+                                        <div className="aesthetic-overlay">
+                                            <div className="aesthetic-content">
+                                                <h3>Sanctuary Spaces</h3>
+                                                <p>Where comfort meets luxury</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Portrait Highlight */}
+                                <motion.div 
+                                    className="aesthetic-card aesthetic-portrait"
+                                    initial={{ opacity: 0, y: -50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.8, delay: 0.6 }}
+                                    viewport={{ once: true }}
+                                    onClick={() => handleOpenModal(aestheticProjects[4])}
+                                >
+                                    <div className="aesthetic-image-wrapper">
+                                        <img 
+                                            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80" 
+                                            alt="Living Space" 
+                                            className="aesthetic-image"
+                                        />
+                                        <div className="aesthetic-overlay">
+                                            <div className="aesthetic-content">
+                                                <h3>Inspired Interiors</h3>
+                                                <p>Crafted to perfection</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Landscape Feature */}
+                                <motion.div 
+                                    className="aesthetic-card aesthetic-landscape"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.9, delay: 0.7 }}
+                                    viewport={{ once: true }}
+                                    onClick={() => handleOpenModal(aestheticProjects[5])}
+                                >
+                                    <div className="aesthetic-image-wrapper">
+                                        <img 
+                                            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=80" 
+                                            alt="Luxury Living" 
+                                            className="aesthetic-image"
+                                        />
+                                        <div className="aesthetic-overlay">
+                                            <div className="aesthetic-content">
+                                                <h3>Elegant Ambiance</h3>
+                                                <p>Sophistication redefined</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </div>
+                    </section>
+
                     <Sustainability />
 
+                    {/* Prestige Gallery - Stunning Visual Experience */}
+                    <PrestigeGallery />
 
                     {/* Philosophy Section */}
                     {/* <section className="home-philosophy">
@@ -479,6 +802,7 @@ const Home = () => {
                     </section>
                     <Testimonials></Testimonials>
                     <FAQ></FAQ>
+
                     {/* Featured Designs Section */}
                     {/* <section className="home-featured-designs">
                         <div className="home-featured-header">
@@ -589,6 +913,13 @@ const Home = () => {
                 </div>
                 <Footer />
             </div>
+
+            {/* Aesthetic Modal */}
+            <AestheticModal 
+                isOpen={modalOpen} 
+                onClose={handleCloseModal} 
+                project={selectedProject} 
+            />
         </div>
     );
 };

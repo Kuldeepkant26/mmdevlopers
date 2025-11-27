@@ -1,18 +1,18 @@
-/* Simple and Clean Splash Screen */
+/* Premium Splash Screen */
 .splash {
   position: fixed;
   inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffffff;
+  background: var(--surface-primary);
   z-index: 9999;
   opacity: 1;
-  animation: splashEnter 0.6s ease-out forwards;
+  animation: splashEnter 1s ease-out forwards;
 }
 
 .splash--exit {
-  animation: splashExit 0.8s ease-in forwards;
+  animation: splashExit 1.5s ease-in-out forwards;
 }
 
 /* Content Container */
@@ -25,29 +25,79 @@
 
 /* Logo Styling */
 .splash__logo {
-  width: clamp(100px, 12vw, 160px);
+  width: clamp(120px, 14vw, 180px);
   height: auto;
   opacity: 0;
-  animation: logoFadeIn 1s ease-out 0.2s forwards;
+  animation: logoFadeIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
 }
 
-/* Professional Premium Loader */
+/* Premium Loader Container */
+.splash__loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  opacity: 0;
+  animation: loaderFadeIn 1s ease-out 0.8s forwards;
+}
+
+/* Circular Ring Loader */
 .splash__loader {
+  position: relative;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  opacity: 0;
-  animation: loaderFadeIn 0.8s ease-out 0.6s forwards;
+}
+
+.splash__loader-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--color-yellow-gold);
+  border-right-color: var(--color-yellow-gold);
+  animation: spinRing 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  box-shadow: 0 0 20px rgba(248, 198, 75, 0.3);
+}
+
+.splash__loader-ring--2 {
+  width: 65%;
+  height: 65%;
+  border-top-color: var(--color-forest-green);
+  border-right-color: var(--color-forest-green);
+  animation: spinRing 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite reverse;
+  box-shadow: 0 0 15px rgba(12, 108, 11, 0.3);
+}
+
+.splash__loader-ring--3 {
+  width: 40%;
+  height: 40%;
+  border-top-color: var(--color-light-yellow);
+  border-right-color: var(--color-light-yellow);
+  animation: spinRing 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  box-shadow: 0 0 10px rgba(248, 198, 75, 0.4);
+}
+
+/* Dots Below Loader */
+.splash__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 0.5rem;
 }
 
 .splash__dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
-  animation: dotPulse 1.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.25);
+  background: linear-gradient(135deg, var(--color-yellow-gold), var(--color-light-yellow));
+  animation: dotPulse 1.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  box-shadow: 0 3px 12px rgba(248, 198, 75, 0.4);
 }
 
 .splash__dot:nth-child(1) {
@@ -55,11 +105,23 @@
 }
 
 .splash__dot:nth-child(2) {
-  animation-delay: 0.15s;
+  animation-delay: 0.2s;
 }
 
 .splash__dot:nth-child(3) {
-  animation-delay: 0.3s;
+  animation-delay: 0.4s;
+}
+
+/* Loading Text */
+.splash__text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0;
+  animation: textPulse 2s ease-in-out infinite;
 }
 
 /* App Shell States */
@@ -82,22 +144,41 @@
 @keyframes splashEnter {
   from {
     opacity: 0;
+    backdrop-filter: blur(10px);
   }
   to {
     opacity: 1;
+    backdrop-filter: blur(0);
   }
 }
 
 @keyframes splashExit {
-  from {
+  0% {
     opacity: 1;
+    transform: scale(1);
   }
-  to {
+  50% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  100% {
     opacity: 0;
+    transform: scale(0.95);
   }
 }
 
 @keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes loaderFadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -108,22 +189,31 @@
   }
 }
 
-@keyframes loaderFadeIn {
-  from {
-    opacity: 0;
+@keyframes spinRing {
+  0% {
+    transform: rotate(0deg);
   }
-  to {
-    opacity: 1;
+  100% {
+    transform: rotate(360deg);
   }
 }
 
 @keyframes dotPulse {
   0%, 100% {
-    transform: scale(0.8);
-    opacity: 0.5;
+    transform: scale(0.7);
+    opacity: 0.4;
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+@keyframes textPulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
     opacity: 1;
   }
 }

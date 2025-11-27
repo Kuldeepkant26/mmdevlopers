@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #FFFFFF;
+  background: var(--surface-primary);
   transition: background 0.5s ease;
   padding: 5rem 0;
 }
@@ -121,7 +121,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   line-height: 1.8;
-  color: var(--color-dark-gray);
+  color: var(--text-secondary);
   max-width: 500px;
   margin-bottom: 1rem;
 }

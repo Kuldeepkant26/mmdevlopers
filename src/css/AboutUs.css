@@ -3,7 +3,7 @@
 
 .aboutus-section {
   min-height: 100vh;
-  background: #FFFFFF;
+  background: var(--surface-primary);
   padding: 80px 0;
   position: relative;
   overflow: hidden;
@@ -126,7 +126,7 @@
   font-size: 15px;
   font-weight: 400;
   line-height: 2;
-  color: var(--color-dark-gray);
+  color: var(--text-secondary);
   margin: 0;
 }
 

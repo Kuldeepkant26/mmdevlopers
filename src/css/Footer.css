@@ -2,10 +2,10 @@
 .footer-section {
     position: relative;
     width: 100%;
-    background: #FFFFFF;
+    background: var(--surface-primary);
     padding: 5rem 0 0;
     overflow: hidden;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: 1px solid var(--border-subtle);
 }
 
 .footer-container {
@@ -48,7 +48,7 @@
 .logo-text-footer {
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--color-dark-gray);
+    color: var(--text-primary);
     font-family: 'Playfair Display', serif;
     letter-spacing: -0.3px;
 }
@@ -56,7 +56,7 @@
 .footer-tagline {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: #4a4a4a;
+    color: var(--text-secondary);
     margin: 0;
     max-width: 320px;
 }
@@ -106,7 +106,7 @@
 .footer-heading {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--color-dark-gray);
+    color: var(--text-primary);
     margin: 0;
     margin-bottom: 0.5rem;
 }
@@ -121,7 +121,7 @@
 }
 
 .footer-list li a {
-    color: #4a4a4a;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.95rem;
     transition: all 0.2s ease;
@@ -162,7 +162,7 @@
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    color: var(--color-dark-gray);
+    color: var(--text-secondary);
     font-size: 0.95rem;
 }
 
@@ -173,7 +173,7 @@
 }
 
 .footer-contact li a {
-    color: var(--color-dark-gray);
+    color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -205,7 +205,7 @@
 
 .footer-copyright {
     font-size: 0.9rem;
-    color: var(--color-light-gray);
+    color: var(--text-secondary);
     margin: 0;
 }
 
@@ -217,7 +217,7 @@
 
 .footer-legal a {
     font-size: 0.9rem;
-    color: var(--color-dark-gray);
+    color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -227,7 +227,7 @@
 }
 
 .legal-divider {
-    color: #ccc;
+    color: var(--border-subtle);
 }
 
 /* Background Decorations */
@@ -509,4 +509,17 @@
     .footer-legal a {
         font-size: 0.75rem;
     }
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] .social-link {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .social-link:hover {
+    background: var(--color-yellow-gold);
+    color: var(--color-navy-blue);
+    border-color: var(--color-yellow-gold);
 }

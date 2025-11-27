@@ -4,11 +4,48 @@
 :root {
   /* Primary Colors */
   --color-navy-blue: #00123A;
+  --color-navy-ink: #00123A;
   --color-yellow-gold: #F8C64B;
   --color-forest-green: #0C6C0B;
   --color-dark-gray: #373737;
   --color-light-gray: #D6D6D6;
   --color-light-yellow: #FFD368;
+
+  /* Theme Surfaces */
+  --surface-primary: #FFFFFF;
+  --surface-secondary: #F5F5F5;
+  --surface-card: #FFFFFF;
+  --surface-muted: #F0F2F5;
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --navbar-glass-bg: rgba(255, 255, 255, 0.55);
+  --navbar-glass-bg-scrolled: rgba(255, 255, 255, 0.72);
+  --navbar-glass-border: rgba(0, 18, 58, 0.08);
+  --navbar-glass-shadow: rgba(0, 18, 58, 0.12);
+  --control-surface: rgba(255, 255, 255, 0.85);
+  --control-border: rgba(0, 18, 58, 0.12);
+  --toggle-track-bg: rgba(0, 18, 58, 0.2);
+  --toggle-thumb-bg: #ffffff;
+}
+
+[data-theme="dark"] {
+  --color-navy-ink: #030b20;
+  --surface-primary: #050b19;
+  --surface-secondary: #0B1427;
+  --surface-card: #0f1b33;
+  --surface-muted: #111d34;
+  --text-primary: #F8FAFF;
+  --text-secondary: #C3D2F6;
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --navbar-glass-bg: rgba(4, 9, 22, 0.92);
+  --navbar-glass-bg-scrolled: rgba(6, 12, 28, 0.95);
+  --navbar-glass-border: rgba(255, 255, 255, 0.15);
+  --navbar-glass-shadow: rgba(1, 5, 15, 0.6);
+  --control-surface: rgba(10, 17, 34, 0.85);
+  --control-border: rgba(255, 255, 255, 0.18);
+  --toggle-track-bg: rgba(255, 255, 255, 0.25);
+  --toggle-thumb-bg: #F8C64B;
 }
 
 /* Prevent horizontal scroll */
@@ -17,6 +54,9 @@ html, body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 #root {

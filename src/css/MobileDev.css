@@ -3,7 +3,7 @@
 
 .mobiledev-section {
   min-height: 100vh;
-  background: #FFFFFF;
+  background: var(--surface-primary);
   padding: 80px 0;
   position: relative;
   overflow: hidden;
@@ -133,7 +133,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.8;
-  color: var(--color-dark-gray);
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -233,7 +233,7 @@
   font-size: 15px;
   font-weight: 400;
   line-height: 2;
-  color: #454545;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -439,4 +439,12 @@
     width: 100%;
     padding: 16px 30px;
   }
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] .feature-title {
+  background: linear-gradient(135deg, var(--color-yellow-gold) 0%, var(--color-forest-green) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

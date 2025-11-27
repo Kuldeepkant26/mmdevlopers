@@ -3,7 +3,7 @@
 
 .websaas-section {
   min-height: 100vh;
-  background: #FFFFFF;
+  background: var(--surface-primary);
   padding: 80px 0;
   position: relative;
   overflow: hidden;
@@ -133,7 +133,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.8;
-  color: #4a4a4a;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -192,8 +192,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #ffffff;
-  color: #2d2d2d;
+  background: var(--surface-card);
+  color: var(--text-primary);
   padding: 12px 24px;
   border-radius: 0;
   font-family: 'Montserrat', sans-serif;
@@ -233,7 +233,7 @@
   font-size: 15px;
   font-weight: 400;
   line-height: 2;
-  color: #454545;
+  color: var(--text-secondary);
   margin: 0;
 }
 
