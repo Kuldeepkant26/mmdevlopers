@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import '../css/Navbar.css';
 import logo from '../assets/mm-logo.png';
 
-const NAV_MAX_OFFSET = 110;
-const HIDE_THRESHOLD = 140;
-const MIN_SCROLL_DELTA = 1;
 const THEME_STORAGE_KEY = 'mmdev-theme';
 
 const SunIcon = () => (
@@ -37,7 +35,6 @@ const Navbar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
     const [showMaintenancePopup, setShowMaintenancePopup] = useState(false);
-    const [navOffset, setNavOffset] = useState(0);
     const [theme, setTheme] = useState(() => {
         if (typeof window === 'undefined') return 'light';
         const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
@@ -46,59 +43,33 @@ const Navbar = () => {
             ? 'dark'
             : 'light';
     });
+    const location = useLocation();
 
     useEffect(() => {
-        const scrollElement = document.querySelector('.home-page') || window;
+        const homeScrollElement = document.querySelector('.home-page');
+        const scrollElement = location.pathname === '/' && homeScrollElement ? homeScrollElement : window;
         const getPosition = () => (scrollElement === window ? window.scrollY : scrollElement.scrollTop);
-        let lastScrollPosition = getPosition();
-        let ticking = false;
+        let animationFrame = null;
 
-        const updateNavbar = () => {
-            const currentPosition = getPosition();
-            const delta = currentPosition - lastScrollPosition;
-
-            setIsScrolled(currentPosition > 20);
-
-            if (isSidebarOpen) {
-                setNavOffset(0);
-                lastScrollPosition = currentPosition;
-                ticking = false;
-                return;
-            }
-
-            setNavOffset((prevOffset) => {
-                let nextOffset = prevOffset;
-
-                if (delta > MIN_SCROLL_DELTA && currentPosition > HIDE_THRESHOLD) {
-                    nextOffset = Math.min(NAV_MAX_OFFSET, prevOffset + Math.min(delta, 20));
-                } else if (delta < -MIN_SCROLL_DELTA) {
-                    nextOffset = Math.max(0, prevOffset + Math.max(delta * 1.2, -20));
-                } else if (currentPosition <= HIDE_THRESHOLD) {
-                    nextOffset = Math.max(0, prevOffset - 2);
-                }
-
-                if (currentPosition < 16) {
-                    nextOffset = 0;
-                }
-
-                nextOffset = Math.max(0, Math.min(NAV_MAX_OFFSET, nextOffset));
-                return Math.abs(nextOffset - prevOffset) < 0.25 ? prevOffset : nextOffset;
-            });
-
-            lastScrollPosition = currentPosition;
-            ticking = false;
+        const updateState = () => {
+            animationFrame = null;
+            setIsScrolled(getPosition() > 20);
         };
 
         const handleScroll = () => {
-            if (!ticking) {
-                window.requestAnimationFrame(updateNavbar);
-                ticking = true;
-            }
+            if (animationFrame) return;
+            animationFrame = window.requestAnimationFrame(updateState);
         };
 
+        handleScroll();
         scrollElement.addEventListener('scroll', handleScroll, { passive: true });
-        return () => scrollElement.removeEventListener('scroll', handleScroll);
-    }, [isSidebarOpen]);
+        return () => {
+            scrollElement.removeEventListener('scroll', handleScroll);
+            if (animationFrame) {
+                window.cancelAnimationFrame(animationFrame);
+            }
+        };
+    }, [location.pathname]);
 
     useEffect(() => {
         const root = document.documentElement;
@@ -129,14 +100,20 @@ const Navbar = () => {
         setOpenDropdown(null);
     };
 
+    const closeSidebar = () => {
+        setIsSidebarOpen(false);
+        setOpenDropdown(null);
+    };
+
     const toggleDropdown = (menu) => {
         setOpenDropdown(openDropdown === menu ? null : menu);
     };
 
     const handleNavClick = (e, itemName) => {
-        if (itemName !== 'HOME') {
+        if (itemName !== 'HOME' && itemName !== 'RESIDENTIAL') {
             e.preventDefault();
             setShowMaintenancePopup(true);
+            closeSidebar();
         }
     };
 
@@ -150,6 +127,8 @@ const Navbar = () => {
         { name: 'RESIDENTIAL', path: '/residential' },
         { name: 'COMMERCIAL', path: '/commercial' },
     ];
+
+    const clientRouteItems = new Set(['HOME', 'RESIDENTIAL', 'COMMERCIAL']);
 
     // All menu items for sidebar
     const menuItems = [
@@ -196,7 +175,6 @@ const Navbar = () => {
         <>
             <nav 
                 className={`navbar ${isScrolled ? 'scrolled' : ''}`}
-                style={{ '--nav-offset': `-${navOffset}px` }}
             >
                 <div className="navbar-container">
                     {/* Logo */}
@@ -208,13 +186,22 @@ const Navbar = () => {
                     <ul className="navbar-menu">
                         {navbarItems.map((item, index) => (
                             <li key={index} className="navbar-item">
-                                <a 
-                                    href={item.path} 
-                                    className="navbar-link"
-                                    onClick={(e) => handleNavClick(e, item.name)}
-                                >
-                                    {item.name}
-                                </a>
+                                {clientRouteItems.has(item.name) ? (
+                                    <Link
+                                        to={item.path}
+                                        className="navbar-link"
+                                    >
+                                        {item.name}
+                                    </Link>
+                                ) : (
+                                    <a 
+                                        href={item.path} 
+                                        className="navbar-link"
+                                        onClick={(e) => handleNavClick(e, item.name)}
+                                    >
+                                        {item.name}
+                                    </a>
+                                )}
                             </li>
                         ))}
                     </ul>
@@ -269,25 +256,35 @@ const Navbar = () => {
                 <nav className="sidebar-nav">
                     {sidebarItems.map((item, index) => (
                         <div key={index} className="sidebar-item">
-                            <a 
-                                href={item.path} 
-                                className="sidebar-link"
-                                onClick={(e) => {
-                                    if (item.submenu) {
-                                        e.preventDefault();
-                                        toggleDropdown(item.name);
-                                    } else {
-                                        handleNavClick(e, item.name);
-                                    }
-                                }}
-                            >
-                                {item.name}
-                                {item.submenu && (
-                                    <span className={`sidebar-arrow ${openDropdown === item.name ? 'open' : ''}`}>
-                                        ▼
-                                    </span>
-                                )}
-                            </a>
+                            {clientRouteItems.has(item.name) ? (
+                                <Link 
+                                    to={item.path} 
+                                    className="sidebar-link"
+                                    onClick={closeSidebar}
+                                >
+                                    {item.name}
+                                </Link>
+                            ) : (
+                                <a 
+                                    href={item.path} 
+                                    className="sidebar-link"
+                                    onClick={(e) => {
+                                        if (item.submenu) {
+                                            e.preventDefault();
+                                            toggleDropdown(item.name);
+                                        } else {
+                                            handleNavClick(e, item.name);
+                                        }
+                                    }}
+                                >
+                                    {item.name}
+                                    {item.submenu && (
+                                        <span className={`sidebar-arrow ${openDropdown === item.name ? 'open' : ''}`}>
+                                            ▼
+                                        </span>
+                                    )}
+                                </a>
+                            )}
                             {item.submenu && (
                                 <div className={`sidebar-submenu ${openDropdown === item.name ? 'open' : ''}`}>
                                     {item.submenu.map((subitem, subindex) => (

@@ -4,7 +4,8 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  --nav-offset: 0px;
+  z-index: 9999;
   transform: translateY(var(--nav-offset, 0px));
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
               box-shadow 0.3s ease,

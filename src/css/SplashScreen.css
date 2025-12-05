@@ -127,17 +127,15 @@
 /* App Shell States */
 .app-shell {
   min-height: 100vh;
-  transition: opacity 0.5s ease, filter 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
 .app-shell--masked {
   opacity: 0;
-  filter: blur(3px);
 }
 
 .app-shell--ready {
   opacity: 1;
-  filter: blur(0);
 }
 
 /* Animations */

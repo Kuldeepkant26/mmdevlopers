@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import Residentials from './pages/Residentials';
+import Commercial from './pages/Commercial';
 import SplashScreen from './components/SplashScreen';
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/residential" element={<Residentials />} />
+            <Route path="/commercial" element={<Commercial />} />
           </Routes>
         </Router>
       </div>
