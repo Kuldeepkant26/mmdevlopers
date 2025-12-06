@@ -310,145 +310,6 @@ const Commercial = () => {
                 </div>
             </section>
 
-            {/* Aesthetic Image Gallery */}
-            <section className="commercial-gallery">
-                <div className="gallery-container">
-                    <div className="section-header" data-aos="fade-up">
-                        <span className="section-badge">Visual Journey</span>
-                        <h2 className="section-title">Our Masterpieces</h2>
-                        <p className="section-description">
-                            Experience excellence through our architectural achievements
-                        </p>
-                    </div>
-
-                    <div className="gallery-grid">
-                        <div className="gallery-item gallery-item-large" data-aos="fade-up" data-aos-delay="100">
-                            <img src={building3} alt="Commercial Building" />
-                            <div className="gallery-overlay">
-                                <h3>Corporate Excellence</h3>
-                                <p>Grade-A Office Spaces</p>
-                            </div>
-                        </div>
-                        
-                        <div className="gallery-item gallery-item-tall" data-aos="fade-up" data-aos-delay="200">
-                            <img src={interior3} alt="Modern Interior" />
-                            <div className="gallery-overlay">
-                                <h3>Premium Interiors</h3>
-                                <p>Luxury Finishes</p>
-                            </div>
-                        </div>
-                        
-                        <div className="gallery-item" data-aos="fade-up" data-aos-delay="300">
-                            <img src={interior4} alt="Elegant Space" />
-                            <div className="gallery-overlay">
-                                <h3>Elegant Design</h3>
-                                <p>Contemporary Style</p>
-                            </div>
-                        </div>
-                        
-                        <div className="gallery-item" data-aos="fade-up" data-aos-delay="400">
-                            <img src={interior5} alt="Spacious Lobby" />
-                            <div className="gallery-overlay">
-                                <h3>Grand Lobbies</h3>
-                                <p>Impressive Entrances</p>
-                            </div>
-                        </div>
-                        
-                        <div className="gallery-item gallery-item-wide" data-aos="fade-up" data-aos-delay="500">
-                            <img src={interior6} alt="Modern Workspace" />
-                            <div className="gallery-overlay">
-                                <h3>Modern Workspaces</h3>
-                                <p>Collaborative Environments</p>
-                            </div>
-                        </div>
-                        
-                        <div className="gallery-item" data-aos="fade-up" data-aos-delay="600">
-                            <img src={interior7} alt="Luxury Amenities" />
-                            <div className="gallery-overlay">
-                                <h3>Luxury Amenities</h3>
-                                <p>Premium Features</p>
-                            </div>
-                        </div>
-                        
-                        <div className="gallery-item gallery-item-tall" data-aos="fade-up" data-aos-delay="700">
-                            <img src={interior9} alt="Sophisticated Space" />
-                            <div className="gallery-overlay">
-                                <h3>Sophisticated</h3>
-                                <p>Attention to Detail</p>
-                            </div>
-                        </div>
-                        
-                        <div className="gallery-item" data-aos="fade-up" data-aos-delay="800">
-                            <img src={interior10} alt="Executive Offices" />
-                            <div className="gallery-overlay">
-                                <h3>Executive Suites</h3>
-                                <p>Private Offices</p>
-                            </div>
-                        </div>
-                        
-                        <div className="gallery-item" data-aos="fade-up" data-aos-delay="900">
-                            <img src={interior11} alt="Conference Rooms" />
-                            <div className="gallery-overlay">
-                                <h3>Meeting Spaces</h3>
-                                <p>Conference Facilities</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Showcase Projects */}
-            <section className="commercial-showcase">
-                <div className="showcase-container">
-                    <div className="section-header" data-aos="fade-up">
-                        <span className="section-badge">Portfolio</span>
-                        <h2 className="section-title">Featured Developments</h2>
-                        <p className="section-description">
-                            Landmark projects that define excellence in commercial real estate
-                        </p>
-                    </div>
-
-                    <div className="showcase-grid">
-                        {showcaseProjects.map((project, index) => (
-                            <div 
-                                key={project.id} 
-                                className="showcase-card"
-                                data-aos="fade-up"
-                                data-aos-delay={index * 100}
-                            >
-                                <div className="showcase-image">
-                                    <img src={project.image} alt={project.name} />
-                                    <div className="showcase-overlay">
-                                        <button className="view-details-btn">
-                                            View Details <FiArrowRight />
-                                        </button>
-                                    </div>
-                                </div>
-                                <div className="showcase-content">
-                                    <div className="showcase-header">
-                                        <h3 className="showcase-name">{project.name}</h3>
-                                        <div className="showcase-location">
-                                            <FiMapPin />
-                                            <span>{project.location}</span>
-                                        </div>
-                                    </div>
-                                    <div className="showcase-meta">
-                                        <span className="meta-item">{project.type}</span>
-                                        <span className="meta-item">{project.area}</span>
-                                        <span className="meta-occupancy">{project.occupancy} Occupied</span>
-                                    </div>
-                                    <div className="showcase-highlights">
-                                        {project.highlights.map((highlight, idx) => (
-                                            <span key={idx} className="highlight-badge">{highlight}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
             {/* Why Choose Us */}
             <section className="commercial-why-choose">
                 <div className="why-choose-container">
@@ -528,6 +389,222 @@ const Commercial = () => {
                             </div>
                         ))}
                         <div className="timeline-line"></div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Premium Services Section */}
+            <section className="commercial-premium-services">
+                <div className="premium-services-container">
+                    <div className="services-header" data-aos="fade-up">
+                        <span className="section-badge-commercial">Our Expertise</span>
+                        <h2 className="section-title-commercial">Crafting Business Ecosystems</h2>
+                        <p className="section-description-commercial">
+                            We transform visions into architectural masterpieces that redefine commercial excellence
+                        </p>
+                    </div>
+
+                    <div className="services-grid">
+                        {commercialServices.map((service, index) => (
+                            <div 
+                                key={index}
+                                className="service-card-premium"
+                                data-aos="fade-up"
+                                data-aos-delay={index * 100}
+                            >
+                                <div className="service-card-glow"></div>
+                                <div className="service-icon-wrapper">
+                                    <div className="service-icon-commercial">{service.icon}</div>
+                                </div>
+                                <h3 className="service-title-commercial">{service.title}</h3>
+                                <p className="service-description-commercial">{service.description}</p>
+                                <div className="service-features-list">
+                                    {service.features.map((feature, idx) => (
+                                        <div key={idx} className="feature-item-commercial">
+                                            <FiCheckCircle className="feature-check" />
+                                            <span>{feature}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <button className="service-explore-btn">
+                                    Explore <FiArrowRight />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Aesthetic Showcase Gallery */}
+            <section className="commercial-aesthetic-showcase">
+                <div className="aesthetic-showcase-container">
+                    <div className="showcase-header-split">
+                        <div className="showcase-header-left" data-aos="fade-right">
+                            <span className="section-badge-commercial">Excellence Visualized</span>
+                            <h2 className="section-title-commercial">Where Innovation<br />Meets Architecture</h2>
+                        </div>
+                        <div className="showcase-header-right" data-aos="fade-left">
+                            <p className="section-description-commercial">
+                                Experience the pinnacle of commercial design through our portfolio of landmark projects. 
+                                Each space is meticulously crafted to inspire productivity, foster collaboration, 
+                                and elevate your business presence.
+                            </p>
+                            <button className="view-all-btn-commercial">
+                                View All Projects <FiArrowRight />
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="aesthetic-gallery-grid">
+                        {/* Large Feature */}
+                        <div className="gallery-card-commercial gallery-large" data-aos="zoom-in" data-aos-delay="100">
+                            <div className="gallery-image-wrapper-commercial">
+                                <img src={heroCommercial1} alt="Corporate Tower" />
+                                <div className="gallery-overlay-commercial">
+                                    <div className="overlay-content-commercial">
+                                        <span className="overlay-badge-commercial">Featured</span>
+                                        <h3 className="overlay-title-commercial">Corporate Excellence</h3>
+                                        <p className="overlay-subtitle-commercial">Grade-A Office Tower</p>
+                                        <div className="overlay-stats-commercial">
+                                            <div className="overlay-stat-item">
+                                                <FiMapPin />
+                                                <span>Prime Location</span>
+                                            </div>
+                                            <div className="overlay-stat-item">
+                                                <BsGraphUp />
+                                                <span>95% Occupied</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Medium Cards */}
+                        <div className="gallery-card-commercial gallery-medium" data-aos="fade-up" data-aos-delay="200">
+                            <div className="gallery-image-wrapper-commercial">
+                                <img src={interior3} alt="Modern Interior" />
+                                <div className="gallery-overlay-commercial">
+                                    <div className="overlay-content-commercial">
+                                        <h3 className="overlay-title-commercial">Premium Interiors</h3>
+                                        <p className="overlay-subtitle-commercial">Luxury Finishes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="gallery-card-commercial gallery-medium" data-aos="fade-up" data-aos-delay="300">
+                            <div className="gallery-image-wrapper-commercial">
+                                <img src={interior4} alt="Executive Space" />
+                                <div className="gallery-overlay-commercial">
+                                    <div className="overlay-content-commercial">
+                                        <h3 className="overlay-title-commercial">Executive Suites</h3>
+                                        <p className="overlay-subtitle-commercial">Elegant Design</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Tall Card */}
+                        <div className="gallery-card-commercial gallery-tall" data-aos="fade-up" data-aos-delay="400">
+                            <div className="gallery-image-wrapper-commercial">
+                                <img src={building3} alt="Commercial Complex" />
+                                <div className="gallery-overlay-commercial">
+                                    <div className="overlay-content-commercial">
+                                        <h3 className="overlay-title-commercial">Mixed-Use Complex</h3>
+                                        <p className="overlay-subtitle-commercial">Integrated Development</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Small Cards */}
+                        <div className="gallery-card-commercial gallery-small" data-aos="fade-up" data-aos-delay="500">
+                            <div className="gallery-image-wrapper-commercial">
+                                <img src={interior7} alt="Workspace" />
+                                <div className="gallery-overlay-commercial">
+                                    <div className="overlay-content-commercial">
+                                        <h3 className="overlay-title-commercial">Collaborative Spaces</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="gallery-card-commercial gallery-small" data-aos="fade-up" data-aos-delay="600">
+                            <div className="gallery-image-wrapper-commercial">
+                                <img src={interior10} alt="Reception" />
+                                <div className="gallery-overlay-commercial">
+                                    <div className="overlay-content-commercial">
+                                        <h3 className="overlay-title-commercial">Grand Lobbies</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Investment Value Proposition */}
+            <section className="commercial-value-proposition">
+                <div className="value-proposition-container">
+                    <div className="value-content-grid">
+                        {/* Left Side - Visual */}
+                        <div className="value-visual-side" data-aos="fade-right">
+                            <div className="value-image-stack">
+                                <div className="stack-image stack-back">
+                                    <img src={heroCommercial2} alt="Commercial Building" />
+                                </div>
+                                <div className="stack-image stack-front">
+                                    <img src={interior5} alt="Interior Space" />
+                                </div>
+                                <div className="value-badge-float">
+                                    <FiAward className="badge-icon-float" />
+                                    <div>
+                                        <div className="badge-number">20+</div>
+                                        <div className="badge-label">Years Experience</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right Side - Content */}
+                        <div className="value-content-side" data-aos="fade-left">
+                            <span className="section-badge-commercial">Investment Excellence</span>
+                            <h2 className="section-title-commercial">Building Value That<br />Lasts Generations</h2>
+                            <p className="section-description-commercial">
+                                Our commercial properties aren't just buildings—they're strategic investments designed 
+                                to deliver exceptional returns while fostering thriving business communities.
+                            </p>
+
+                            <div className="value-highlights">
+                                {whyChooseUs.map((item, index) => (
+                                    <div 
+                                        key={index}
+                                        className="value-highlight-item"
+                                        data-aos="fade-up"
+                                        data-aos-delay={index * 100}
+                                    >
+                                        <div className="highlight-icon-wrapper">
+                                            {item.icon}
+                                        </div>
+                                        <div className="highlight-content">
+                                            <h3 className="highlight-title">{item.title}</h3>
+                                            <p className="highlight-description">{item.description}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="value-cta-row">
+                                <button className="value-primary-btn">
+                                    Schedule Consultation
+                                    <FiArrowRight />
+                                </button>
+                                <button className="value-secondary-btn">
+                                    Download Brochure
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

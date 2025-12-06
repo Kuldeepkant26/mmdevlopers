@@ -7,12 +7,41 @@
 .commercial-page {
     width: 100%;
     min-height: 100vh;
-    background: var(--surface-primary);
+    background: transparent;
     color: var(--text-primary);
     opacity: 0;
     transition: opacity 0.6s ease;
     position: relative;
     z-index: 1;
+}
+
+/* Page-wide Animated Background */
+.commercial-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--surface-primary);
+    z-index: -2;
+}
+
+.commercial-page::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(var(--border-subtle) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+    animation: gridScroll 20s linear infinite;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .commercial-page.loaded {
@@ -44,18 +73,19 @@
     justify-content: center;
     overflow: hidden;
     padding: 8rem 3rem 4rem;
-    background: var(--surface-primary);
+    background: transparent;
 }
 
 /* Animated Background */
 .commercial-page .hero-bg-wrapper {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: -1;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .commercial-page .hero-gradient-orb {
@@ -105,19 +135,7 @@
     }
 }
 
-.commercial-page .hero-grid-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(var(--border-subtle) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
-    background-size: 50px 50px;
-    opacity: 0.3;
-    animation: gridScroll 20s linear infinite;
-}
+
 
 @keyframes gridScroll {
     0% {
@@ -410,7 +428,7 @@
 .commercial-page .commercial-process,
 .commercial-page .commercial-testimonials {
     padding: 6rem 2rem;
-    background: var(--surface-primary);
+    background: transparent;
 }
 
 .commercial-page .gallery-container,
@@ -462,7 +480,7 @@
    ======================================== */
 .commercial-page .commercial-gallery {
     padding: 6rem 2rem;
-    background: var(--surface-primary);
+    background: transparent;
 }
 
 .commercial-page .gallery-container {
@@ -568,7 +586,7 @@
    SHOWCASE SECTION
    ======================================== */
 .commercial-page .commercial-showcase {
-    background: var(--surface-secondary);
+    background: transparent;
 }
 
 .commercial-page .showcase-grid {
@@ -913,7 +931,7 @@
    TESTIMONIALS SECTION
    ======================================== */
 .commercial-page .commercial-testimonials {
-    background: var(--surface-secondary);
+    background: transparent;
 }
 
 .commercial-page .testimonials-grid {
@@ -994,7 +1012,7 @@
    ======================================== */
 .commercial-page .commercial-cta {
     padding: 6rem 2rem;
-    background: linear-gradient(135deg, var(--color-navy-blue) 0%, rgba(12, 108, 11, 0.8) 100%);
+    background: transparent;
     position: relative;
     overflow: hidden;
 }
@@ -1030,7 +1048,7 @@
 .commercial-page .cta-title {
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 300;
-    color: #ffffff;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     line-height: 1.2;
 }
@@ -1038,7 +1056,7 @@
 .commercial-page .cta-description {
     font-size: 1.25rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-secondary);
     margin-bottom: 2.5rem;
     max-width: 700px;
     margin-left: auto;
@@ -1077,9 +1095,9 @@
 }
 
 .commercial-page .cta-btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-subtle);
     backdrop-filter: blur(10px);
 }
 
@@ -1094,14 +1112,14 @@
     justify-content: center;
     flex-wrap: wrap;
     padding-top: 3rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-subtle);
 }
 
 .commercial-page .cta-feature {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: #ffffff;
+    color: var(--text-primary);
     font-size: 1rem;
     font-weight: 500;
 }
@@ -1295,5 +1313,716 @@
 
     .commercial-page .cta-title {
         font-size: 1.75rem;
+    }
+}
+
+/* ========================================
+   NEW AESTHETIC SECTIONS
+   ======================================== */
+
+/* Shared Section Styles for New Sections */
+.commercial-page .section-badge-commercial {
+    display: inline-block;
+    width: fit-content;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-forest-green);
+    margin-bottom: 1rem;
+    padding: 0.5rem 1.25rem;
+    background: linear-gradient(135deg, rgba(248, 198, 75, 0.1), rgba(12, 108, 11, 0.1));
+    border-radius: 50px;
+    border: 1px solid rgba(12, 108, 11, 0.2);
+}
+
+.commercial-page .section-title-commercial {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--color-yellow-gold) 0%, var(--color-forest-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+}
+
+.commercial-page .section-description-commercial {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   PREMIUM SERVICES SECTION
+   ======================================== */
+.commercial-page .commercial-premium-services {
+    padding: 8rem 3rem;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.commercial-page .premium-services-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.commercial-page .services-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.commercial-page .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.commercial-page .service-card-premium {
+    position: relative;
+    background: var(--surface-card);
+    border-radius: 24px;
+    padding: 2.5rem;
+    border: 1px solid var(--border-subtle);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.commercial-page .service-card-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(248, 198, 75, 0.03), rgba(12, 108, 11, 0.03));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.commercial-page .service-card-premium:hover::before {
+    opacity: 1;
+}
+
+.commercial-page .service-card-premium:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 18, 58, 0.15);
+    border-color: var(--color-yellow-gold);
+}
+
+.commercial-page .service-card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(248, 198, 75, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+
+.commercial-page .service-card-premium:hover .service-card-glow {
+    opacity: 1;
+}
+
+.commercial-page .service-icon-wrapper {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+}
+
+.commercial-page .service-icon-commercial {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(248, 198, 75, 0.1), rgba(12, 108, 11, 0.1));
+    border-radius: 20px;
+    font-size: 2rem;
+    color: var(--color-forest-green);
+    transition: all 0.4s ease;
+}
+
+.commercial-page .service-card-premium:hover .service-icon-commercial {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, var(--color-yellow-gold), var(--color-forest-green));
+    color: white;
+}
+
+.commercial-page .service-title-commercial {
+    position: relative;
+    z-index: 1;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.commercial-page .service-description-commercial {
+    position: relative;
+    z-index: 1;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.commercial-page .service-features-list {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.commercial-page .feature-item-commercial {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.commercial-page .feature-check {
+    color: var(--color-forest-green);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.commercial-page .service-explore-btn {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: var(--color-forest-green);
+    border: 1px solid var(--border-subtle);
+    border-radius: 50px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.commercial-page .service-explore-btn:hover {
+    background: var(--color-forest-green);
+    color: white;
+    border-color: var(--color-forest-green);
+    transform: translateX(5px);
+}
+
+/* ========================================
+   AESTHETIC SHOWCASE GALLERY
+   ======================================== */
+.commercial-page .commercial-aesthetic-showcase {
+    padding: 8rem 3rem;
+    background: transparent;
+    position: relative;
+}
+
+.commercial-page .aesthetic-showcase-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.commercial-page .showcase-header-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.commercial-page .showcase-header-left {
+    position: relative;
+}
+
+.commercial-page .showcase-header-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.commercial-page .view-all-btn-commercial {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--color-yellow-gold), var(--color-forest-green));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    align-self: flex-start;
+}
+
+.commercial-page .view-all-btn-commercial:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(248, 198, 75, 0.4);
+}
+
+.commercial-page .aesthetic-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 200px;
+    gap: 1.5rem;
+}
+
+.commercial-page .gallery-card-commercial {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.commercial-page .gallery-large {
+    grid-column: span 6;
+    grid-row: span 2;
+}
+
+.commercial-page .gallery-medium {
+    grid-column: span 3;
+    grid-row: span 1;
+}
+
+.commercial-page .gallery-tall {
+    grid-column: span 6;
+    grid-row: span 2;
+}
+
+.commercial-page .gallery-small {
+    grid-column: span 3;
+    grid-row: span 1;
+}
+
+.commercial-page .gallery-image-wrapper-commercial {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.commercial-page .gallery-image-wrapper-commercial img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.commercial-page .gallery-card-commercial:hover img {
+    transform: scale(1.1);
+}
+
+.commercial-page .gallery-overlay-commercial {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0, 18, 58, 0.85) 0%, rgba(0, 18, 58, 0.4) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+}
+
+.commercial-page .gallery-card-commercial:hover .gallery-overlay-commercial {
+    opacity: 1;
+}
+
+.commercial-page .overlay-content-commercial {
+    color: white;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.commercial-page .gallery-card-commercial:hover .overlay-content-commercial {
+    transform: translateY(0);
+}
+
+.commercial-page .overlay-badge-commercial {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background: var(--color-yellow-gold);
+    color: var(--color-navy-blue);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+
+.commercial-page .overlay-title-commercial {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.commercial-page .overlay-subtitle-commercial {
+    font-size: 0.9375rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.commercial-page .overlay-stats-commercial {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.commercial-page .overlay-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* ========================================
+   INVESTMENT VALUE PROPOSITION
+   ======================================== */
+.commercial-page .commercial-value-proposition {
+    padding: 8rem 3rem;
+    background: transparent;
+    position: relative;
+}
+
+.commercial-page .value-proposition-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.commercial-page .value-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.commercial-page .value-visual-side {
+    position: relative;
+}
+
+.commercial-page .value-image-stack {
+    position: relative;
+    height: 600px;
+}
+
+.commercial-page .stack-image {
+    position: absolute;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 18, 58, 0.15);
+    transition: transform 0.4s ease;
+}
+
+.commercial-page .stack-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.commercial-page .stack-back {
+    width: 70%;
+    height: 400px;
+    top: 100px;
+    right: 0;
+    z-index: 1;
+}
+
+.commercial-page .stack-front {
+    width: 70%;
+    height: 400px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.commercial-page .value-image-stack:hover .stack-back {
+    transform: translate(10px, 10px);
+}
+
+.commercial-page .value-image-stack:hover .stack-front {
+    transform: translate(-10px, -10px);
+}
+
+.commercial-page .value-badge-float {
+    position: absolute;
+    bottom: 50px;
+    right: 30px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background: var(--surface-card);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 18, 58, 0.2);
+}
+
+.commercial-page .badge-icon-float {
+    font-size: 2.5rem;
+    color: var(--color-yellow-gold);
+}
+
+.commercial-page .badge-number {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-yellow-gold), var(--color-forest-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.commercial-page .badge-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.commercial-page .value-content-side {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.commercial-page .value-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.commercial-page .value-highlight-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.commercial-page .highlight-icon-wrapper {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(248, 198, 75, 0.15), rgba(12, 108, 11, 0.15));
+    border-radius: 16px;
+    font-size: 1.75rem;
+    color: var(--color-forest-green);
+    transition: all 0.3s ease;
+}
+
+.commercial-page .value-highlight-item:hover .highlight-icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, var(--color-yellow-gold), var(--color-forest-green));
+    color: white;
+}
+
+.commercial-page .highlight-content {
+    flex: 1;
+}
+
+.commercial-page .highlight-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.commercial-page .highlight-description {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.commercial-page .value-cta-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.commercial-page .value-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--color-yellow-gold), var(--color-forest-green));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.commercial-page .value-primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(248, 198, 75, 0.4);
+}
+
+.commercial-page .value-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: transparent;
+    color: var(--color-forest-green);
+    border: 2px solid var(--color-forest-green);
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.commercial-page .value-secondary-btn:hover {
+    background: var(--color-forest-green);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN FOR NEW SECTIONS
+   ======================================== */
+@media (max-width: 1024px) {
+    .commercial-page .commercial-premium-services,
+    .commercial-page .commercial-aesthetic-showcase,
+    .commercial-page .commercial-value-proposition {
+        padding: 5rem 2rem;
+    }
+
+    .commercial-page .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .commercial-page .showcase-header-split {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .commercial-page .aesthetic-gallery-grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-auto-rows: 180px;
+    }
+
+    .commercial-page .gallery-large {
+        grid-column: span 6;
+    }
+
+    .commercial-page .gallery-tall {
+        grid-column: span 6;
+    }
+
+    .commercial-page .value-content-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .commercial-page .value-image-stack {
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .commercial-page .commercial-premium-services,
+    .commercial-page .commercial-aesthetic-showcase,
+    .commercial-page .commercial-value-proposition {
+        padding: 4rem 1.5rem;
+    }
+
+    .commercial-page .services-header {
+        margin-bottom: 3rem;
+    }
+
+    .commercial-page .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .commercial-page .section-title-commercial {
+        font-size: 2rem;
+    }
+
+    .commercial-page .aesthetic-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+        gap: 1rem;
+    }
+
+    .commercial-page .gallery-large,
+    .commercial-page .gallery-medium,
+    .commercial-page .gallery-tall,
+    .commercial-page .gallery-small {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .commercial-page .value-image-stack {
+        height: 400px;
+    }
+
+    .commercial-page .stack-back,
+    .commercial-page .stack-front {
+        width: 80%;
+        height: 300px;
+    }
+
+    .commercial-page .value-badge-float {
+        padding: 1rem 1.5rem;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .commercial-page .badge-icon-float {
+        font-size: 2rem;
+    }
+
+    .commercial-page .badge-number {
+        font-size: 1.5rem;
+    }
+
+    .commercial-page .value-cta-row {
+        flex-direction: column;
+    }
+
+    .commercial-page .value-primary-btn,
+    .commercial-page .value-secondary-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .commercial-page .service-card-premium {
+        padding: 2rem;
+    }
+
+    .commercial-page .aesthetic-gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .commercial-page .value-highlight-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .commercial-page .highlight-icon-wrapper {
+        margin: 0 auto;
     }
 }
