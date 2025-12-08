@@ -121,29 +121,22 @@ const Navbar = () => {
         setShowMaintenancePopup(false);
     };
 
-    // Only 3 items shown in navbar on larger screens
+    // Only 4 items shown in navbar on larger screens
     const navbarItems = [
         { name: 'HOME', path: '/' },
+        { name: 'ABOUT', path: '/about' },
         { name: 'RESIDENTIAL', path: '/residential' },
         { name: 'COMMERCIAL', path: '/commercial' },
     ];
 
-    const clientRouteItems = new Set(['HOME', 'RESIDENTIAL', 'COMMERCIAL']);
+    const clientRouteItems = new Set(['HOME', 'ABOUT', 'RESIDENTIAL', 'COMMERCIAL']);
 
     // All menu items for sidebar
     const menuItems = [
         { name: 'HOME', path: '/' },
         { name: 'RESIDENTIAL', path: '/residential' },
         { name: 'COMMERCIAL', path: '/commercial' },
-        { 
-            name: 'ABOUT', 
-            path: '/about',
-            submenu: [
-                { name: 'Our Story', path: '/about/story' },
-                { name: 'Team', path: '/about/team' },
-                { name: 'Vision & Mission', path: '/about/vision' }
-            ]
-        },
+        { name: 'ABOUT', path: '/about' },
         { 
             name: 'INVESTOR', 
             path: '/investor',

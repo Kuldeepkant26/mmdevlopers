@@ -3,8 +3,6 @@ import '../css/Residentials.css';
 import Footer from '../components/Footer';
 
 // Import images from assets
-import heroExterior1 from '../assets/homehero2.jpg';
-import heroExterior2 from '../assets/homehero3.jpg';
 import heroExterior3 from '../assets/building4.avif';
 import heroExterior4 from '../assets/building5.jpg';
 import heroExterior5 from '../assets/building6.jpg';
@@ -21,8 +19,12 @@ const Residentials = () => {
     const [currentHeroImage, setCurrentHeroImage] = useState(0);
     const [currentPhilosophyImage, setCurrentPhilosophyImage] = useState(0);
 
-    // Hero carousel images
-    const heroImages = [heroExterior1, heroExterior2, heroExterior3, heroExterior4, heroExterior5];
+    // Hero carousel images (remote assets requested)
+    const heroImages = [
+        'https://cdn.pixabay.com/photo/2024/09/17/11/19/real-estate-9053405_1280.jpg',
+        'https://i.pinimg.com/1200x/a9/38/31/a938314e688f56ee245c458e0d5c24c1.jpg',
+        'https://i.pinimg.com/1200x/6e/8c/68/6e8c680d967a36681472c1dee8aaddf7.jpg'
+    ];
     
     // Philosophy section carousel images
     const philosophyImages = [interiorLobby, interior3, interior4, interior5, interior6];

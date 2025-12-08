@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Residentials from './pages/Residentials';
 import Commercial from './pages/Commercial';
+import About from './pages/About';
 import SplashScreen from './components/SplashScreen';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/residential" element={<Residentials />} />
             <Route path="/commercial" element={<Commercial />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </Router>
       </div>
