@@ -148,6 +148,41 @@
     width: 100%;
 }
 
+/* Footer Link Buttons */
+.footer-link-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+}
+
+.footer-link-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-yellow-gold);
+    transition: width 0.3s ease;
+}
+
+.footer-link-btn:hover {
+    color: var(--color-yellow-gold);
+}
+
+.footer-link-btn:hover::after {
+    width: 100%;
+}
+
 /* Contact List */
 .footer-contact {
     list-style: none;

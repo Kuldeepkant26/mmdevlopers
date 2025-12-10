@@ -267,33 +267,33 @@ const Commercial = () => {
                             {/* Card 1 - Office */}
                             <div className="float-card card-1" data-aos="fade-up" data-aos-delay="300">
                                 <div className="card-glow"></div>
+                                <div className="card-stat">3.5M+ Sq. Ft.</div>
                                 <div className="card-content">
                                     <HiOutlineOfficeBuilding className="card-icon" />
                                     <h3>Office Spaces</h3>
                                     <p>Grade-A Corporate Towers</p>
-                                    <div className="card-stat">3.5M+ Sq. Ft.</div>
                                 </div>
                             </div>
 
                             {/* Card 2 - Retail */}
                             <div className="float-card card-2" data-aos="fade-up" data-aos-delay="400">
                                 <div className="card-glow"></div>
+                                <div className="card-stat">1.2M+ Sq. Ft.</div>
                                 <div className="card-content">
                                     <HiOutlineShoppingCart className="card-icon" />
                                     <h3>Retail Malls</h3>
                                     <p>Premium Shopping Destinations</p>
-                                    <div className="card-stat">1.2M+ Sq. Ft.</div>
                                 </div>
                             </div>
 
                             {/* Card 3 - Mixed Use */}
                             <div className="float-card card-3" data-aos="fade-up" data-aos-delay="500">
                                 <div className="card-glow"></div>
+                                <div className="card-stat">4M+ Sq. Ft.</div>
                                 <div className="card-content">
                                     <BsBuilding className="card-icon" />
                                     <h3>Mixed-Use</h3>
                                     <p>Integrated Developments</p>
-                                    <div className="card-stat">4M+ Sq. Ft.</div>
                                 </div>
                             </div>
 

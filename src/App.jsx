@@ -6,6 +6,7 @@ import Residentials from './pages/Residentials';
 import Commercial from './pages/Commercial';
 import About from './pages/About';
 import SplashScreen from './components/SplashScreen';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -26,6 +27,7 @@ function App() {
       {showSplash && <SplashScreen exiting={exitingSplash} />}
       <div className={`app-shell ${showSplash ? 'app-shell--masked' : 'app-shell--ready'}`}>
         <Router>
+          <ScrollToTop />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

@@ -3,6 +3,9 @@ import '../css/About.css';
 import Footer from '../components/Footer';
 import CardSwap, { Card } from '../component/CardSwap';
 import AboutShowcase from '../components/AboutShowcase';
+import CreativeJourney from '../components/CreativeJourney';
+import SignatureProjects from '../components/SignatureProjects';
+import ImmersiveVision from '../components/ImmersiveVision';
 import { useTheme } from '../context/ThemeContext';
 
 const About = () => {
@@ -75,6 +78,12 @@ const About = () => {
             <div ref={showcaseRef}>
                 <AboutShowcase />
             </div>
+
+            <CreativeJourney />
+
+            <SignatureProjects />
+
+            <ImmersiveVision />
 
             <Footer />
         </div>

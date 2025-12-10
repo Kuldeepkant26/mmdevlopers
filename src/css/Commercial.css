@@ -268,6 +268,7 @@
 .commercial-page .float-card:hover {
     transform: translateY(-15px) scale(1.05);
     box-shadow: 0 20px 60px rgba(248, 198, 75, 0.25);
+    z-index: 10;
 }
 
 .commercial-page .card-1 {
@@ -354,14 +355,18 @@
 }
 
 .commercial-page .card-stat {
+    position: absolute;
+    top: 12px;
+    right: 12px;
     display: inline-block;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
     background: linear-gradient(135deg, rgba(248, 198, 75, 0.15), rgba(12, 108, 11, 0.15));
     border: 1px solid var(--color-yellow-gold);
     border-radius: 8px;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--color-yellow-gold);
+    z-index: 2;
 }
 
 /* Achievement Badge */

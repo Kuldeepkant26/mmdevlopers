@@ -87,7 +87,7 @@ const FAQ = () => {
     };
 
     return (
-        <section className="faq-section">
+        <section className="faq-section" id="faq-section">
             <motion.div 
                 className="faq-container"
                 ref={intersectionRef}

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../css/AboutShowcase.css';
 import { useTheme } from '../context/ThemeContext';
+import { FaHome, FaGem, FaHandshake } from 'react-icons/fa';
 
 const AboutShowcase = () => {
     const { isDark } = useTheme();
@@ -10,19 +11,19 @@ const AboutShowcase = () => {
         {
             title: "Trust of a Family",
             description: "Going for a property is a huge deal. We do our best to get you a dream home that makes every penny spent worth it.",
-            icon: "🏡",
+            Icon: FaHome,
             color: "#667eea"
         },
         {
             title: "Quality Excellence",
             description: "Every plan addresses smartly utilized, functional, well-designed space priced right with value appreciation over time.",
-            icon: "✨",
+            Icon: FaGem,
             color: "#f093fb"
         },
         {
             title: "Customer First",
             description: "Prioritizing trust and transparency throughout your journey to finding the perfect home for your family.",
-            icon: "💼",
+            Icon: FaHandshake,
             color: "#4facfe"
         }
     ];
@@ -39,32 +40,32 @@ const AboutShowcase = () => {
                 </div>
 
                 <div className="ventures-showcase__grid">
-                    {ventures.map((venture, index) => (
-                        <div
-                            key={index}
-                            className={`ventures-showcase__card ${activeCard === index ? 'ventures-showcase__card--active' : ''}`}
-                            onMouseEnter={() => setActiveCard(index)}
-                            data-aos="fade-up"
-                            data-aos-delay={index * 100}
-                        >
-                            <div className="ventures-showcase__card-inner">
-                                <div className="ventures-showcase__icon-wrapper">
-                                    <span className="ventures-showcase__icon">{venture.icon}</span>
-                                    <div 
-                                        className="ventures-showcase__icon-bg" 
-                                        style={{ background: `linear-gradient(135deg, ${venture.color}, ${venture.color}dd)` }}
-                                    />
+                    {ventures.map((venture, index) => {
+                        const IconComponent = venture.Icon;
+                        return (
+                            <div
+                                key={index}
+                                className={`ventures-showcase__card ${activeCard === index ? 'ventures-showcase__card--active' : ''}`}
+                                data-aos="fade-up"
+                                data-aos-delay={index * 100}
+                            >
+                                <div className="ventures-showcase__card-inner">
+                                    <div className="ventures-showcase__icon-wrapper">
+                                        <IconComponent className="ventures-showcase__icon" />
+                                        <div 
+                                            className="ventures-showcase__icon-bg" 
+                                            style={{ background: `linear-gradient(135deg, ${venture.color}, ${venture.color}dd)` }}
+                                        />
+                                    </div>
+                                    
+                                    <div className="ventures-showcase__card-content">
+                                        <h3 className="ventures-showcase__card-title">{venture.title}</h3>
+                                        <p className="ventures-showcase__card-text">{venture.description}</p>
+                                    </div>
                                 </div>
-                                
-                                <div className="ventures-showcase__card-content">
-                                    <h3 className="ventures-showcase__card-title">{venture.title}</h3>
-                                    <p className="ventures-showcase__card-text">{venture.description}</p>
-                                </div>
-
-                                <div className="ventures-showcase__hover-effect" style={{ background: venture.color }} />
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
                 <div className="ventures-showcase__stats" data-aos="fade-up" data-aos-delay="300">

@@ -34,7 +34,7 @@ const CTA = () => {
     };
 
     return (
-        <section className="cta-section">
+        <section className="cta-section" id="cta-section">
             <div className="cta-container">
                 <motion.div 
                     className="cta-content"

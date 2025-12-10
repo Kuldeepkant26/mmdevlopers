@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/Footer.css';
 import { 
     FaLinkedinIn, 
@@ -7,12 +8,32 @@ import {
     FaFacebookF,
     FaEnvelope,
     FaPhone,
-    FaMapMarkerAlt
+    FaMapMarkerAlt,
+    FaWhatsapp
 } from 'react-icons/fa';
 import logoIcon from '../assets/mm-logo.png';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
+    const navigate = useNavigate();
+
+    // Scroll to section handler
+    const scrollToSection = (path, sectionId) => {
+        if (window.location.pathname === path) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } else {
+            navigate(path);
+            setTimeout(() => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        }
+    };
 
     return (
         <footer className="footer-section">
@@ -24,44 +45,65 @@ const Footer = () => {
                             <img src={logoIcon} alt="MM Developers Logo" className="footer-logo-icon" />
                         </div>
                         <p className="footer-tagline">
-                            Crafting premium digital experiences with innovation and excellence. We bring your vision to life with cutting-edge solutions.
+                            Building dreams, creating homes. MM Developers is committed to redefining luxury in real estate with trust, comfort, and excellence at the heart of everything we do.
                         </p>
                         <div className="footer-social">
-                            <a href="#" className="social-link" aria-label="LinkedIn">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">
                                 <FaLinkedinIn />
                             </a>
-                            <a href="#" className="social-link" aria-label="Twitter">
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Twitter">
                                 <FaTwitter />
                             </a>
-                            <a href="#" className="social-link" aria-label="Instagram">
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
                                 <FaInstagram />
                             </a>
-                            <a href="#" className="social-link" aria-label="Facebook">
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">
                                 <FaFacebookF />
+                            </a>
+                            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="WhatsApp">
+                                <FaWhatsapp />
                             </a>
                         </div>
                     </div>
 
                     <div className="footer-links">
                         <div className="footer-column">
-                            <h3 className="footer-heading">Services</h3>
+                            <h3 className="footer-heading">Pages</h3>
                             <ul className="footer-list">
-                                <li><a href="#service1">Service 1</a></li>
-                                <li><a href="#service2">Service 2</a></li>
-                                <li><a href="#service3">Service 3</a></li>
-                                <li><a href="#service4">Service 4</a></li>
-                                <li><a href="#consulting">Consulting</a></li>
+                                <li><Link to="/">Home</Link></li>
+                                <li><Link to="/about">About Us</Link></li>
+                                <li><Link to="/residential">Residential</Link></li>
+                                <li><Link to="/commercial">Commercial</Link></li>
                             </ul>
                         </div>
 
                         <div className="footer-column">
-                            <h3 className="footer-heading">Company</h3>
+                            <h3 className="footer-heading">Quick Links</h3>
                             <ul className="footer-list">
-                                <li><a href="#about">About Us</a></li>
-                                <li><a href="#careers">Careers</a></li>
-                                <li><a href="#portfolio">Portfolio</a></li>
-                                <li><a href="#blog">Blog</a></li>
-                                <li><a href="#contact">Contact</a></li>
+                                <li>
+                                    <button 
+                                        className="footer-link-btn"
+                                        onClick={() => scrollToSection('/', 'faq-section')}
+                                    >
+                                        FAQ
+                                    </button>
+                                </li>
+                                <li>
+                                    <button 
+                                        className="footer-link-btn"
+                                        onClick={() => scrollToSection('/', 'testimonials-section')}
+                                    >
+                                        Testimonials
+                                    </button>
+                                </li>
+                                <li>
+                                    <button 
+                                        className="footer-link-btn"
+                                        onClick={() => scrollToSection('/about', 'signature-projects-section')}
+                                    >
+                                        Our Projects
+                                    </button>
+                                </li>
                             </ul>
                         </div>
 
@@ -70,15 +112,15 @@ const Footer = () => {
                             <ul className="footer-contact">
                                 <li>
                                     <FaEnvelope className="contact-icon" />
-                                    <a href="mailto:info@mmd.com">info@mmd.com</a>
+                                    <a href="mailto:info@mmdevelopers.in">info@mmdevelopers.in</a>
                                 </li>
                                 <li>
                                     <FaPhone className="contact-icon" />
-                                    <a href="tel:+1234567890">+1 (234) 567-890</a>
+                                    <a href="tel:+911234567890">+91 12345 67890</a>
                                 </li>
                                 <li>
                                     <FaMapMarkerAlt className="contact-icon" />
-                                    <span>123 Business Street, City, State 12345</span>
+                                    <span>MM Developers, Sector 62, Noida, UP 201301</span>
                                 </li>
                             </ul>
                         </div>
@@ -91,14 +133,12 @@ const Footer = () => {
                 {/* Bottom Section */}
                 <div className="footer-bottom">
                     <p className="footer-copyright">
-                        © {currentYear} MMD. All rights reserved.
+                        © {currentYear} MM Developers. All rights reserved.
                     </p>
                     <div className="footer-legal">
-                        <a href="#privacy">Privacy Policy</a>
+                        <Link to="/about">Privacy Policy</Link>
                         <span className="legal-divider">•</span>
-                        <a href="#terms">Terms of Service</a>
-                        <span className="legal-divider">•</span>
-                        <a href="#cookies">Cookie Policy</a>
+                        <Link to="/about">Terms of Service</Link>
                     </div>
                 </div>
             </div>

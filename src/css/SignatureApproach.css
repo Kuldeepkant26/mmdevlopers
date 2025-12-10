@@ -1,0 +1,221 @@
+.signature-section {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 100px 5%;
+}
+
+.signature-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.signature-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.signature-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+}
+
+.signature-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.signature-header {
+    color: #fff;
+}
+
+.signature-label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--color-yellow-gold);
+    font-weight: 600;
+}
+
+.signature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.signature-intro {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 400px;
+}
+
+.signature-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.signature-item {
+    padding: 35px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.signature-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.signature-item.active {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateX(30px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.signature-item-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.signature-index {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.3);
+    transition: color 0.3s ease;
+}
+
+.signature-item.active .signature-index {
+    color: var(--color-yellow-gold);
+}
+
+.signature-item-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #fff;
+    margin: 0;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.signature-item.active .signature-item-title {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.signature-item-body {
+    overflow: hidden;
+}
+
+.signature-divider {
+    width: 50px;
+    height: 3px;
+    margin: 24px 0;
+    border-radius: 2px;
+}
+
+.signature-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.signature-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 90%;
+    margin-bottom: 24px;
+}
+
+.signature-icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    background: rgba(0,0,0,0.2);
+}
+
+@media (max-width: 1200px) {
+    .signature-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .signature-header {
+        text-align: center;
+    }
+    
+    .signature-intro {
+        margin: 0 auto;
+    }
+    
+    .signature-item.active {
+        transform: translateX(0) scale(1.02);
+    }
+}
+
+@media (max-width: 768px) {
+    .signature-section {
+        padding: 80px 20px;
+    }
+    
+    .signature-title {
+        font-size: 2.5rem;
+    }
+    
+    .signature-item-title {
+        font-size: 1.5rem;
+    }
+    
+    .signature-item {
+        padding: 24px;
+    }
+}

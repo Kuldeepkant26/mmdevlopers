@@ -310,7 +310,9 @@
   box-shadow: -5px 0 30px rgba(0, 18, 58, 0.2);
   transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10001;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .sidebar.active {
@@ -324,6 +326,7 @@
   padding: 1.5rem 2rem;
   border-bottom: 1px solid rgba(0, 18, 58, 0.1);
   background: linear-gradient(135deg, rgba(248, 198, 75, 0.05), rgba(12, 108, 11, 0.05));
+  flex-shrink: 0;
 }
 
 .sidebar-logo {
@@ -353,6 +356,12 @@
 }
 
 /* Sidebar Navigation */
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .sidebar-nav {
   padding: 1rem 0;
 }
@@ -420,6 +429,74 @@
   color: var(--color-forest-green);
   padding-left: 3.5rem;
   border-left-color: var(--color-yellow-gold);
+}
+
+/* Quick Links Section */
+.sidebar-quicklinks {
+  margin-top: 1.5rem;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(0, 18, 58, 0.08);
+}
+
+.sidebar-quicklinks-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-yellow-gold);
+  margin-bottom: 1rem;
+}
+
+.sidebar-quicklink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  margin-bottom: 0.5rem;
+  background: rgba(12, 108, 11, 0.04);
+  border: 1px solid rgba(0, 18, 58, 0.06);
+  border-radius: 12px;
+  color: var(--color-navy-blue);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.sidebar-quicklink:hover {
+  background: linear-gradient(135deg, rgba(248, 198, 75, 0.15), rgba(12, 108, 11, 0.1));
+  border-color: var(--color-yellow-gold);
+  transform: translateX(5px);
+}
+
+.sidebar-quicklink-icon {
+  font-size: 1.1rem;
+  color: var(--color-forest-green);
+  transition: color 0.3s ease;
+}
+
+.sidebar-quicklink:hover .sidebar-quicklink-icon {
+  color: var(--color-yellow-gold);
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .sidebar-quicklinks {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .sidebar-quicklink {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .sidebar-quicklink:hover {
+  background: rgba(248, 198, 75, 0.1);
+  border-color: var(--color-yellow-gold);
 }
 
 /* Responsive */

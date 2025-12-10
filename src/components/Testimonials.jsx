@@ -128,7 +128,7 @@ const Testimonials = () => {
     };
 
     return (
-        <section className="testimonials-section" ref={sectionRef}>
+        <section className="testimonials-section" ref={sectionRef} id="testimonials-section">
             <motion.div 
                 className="testimonials-container"
                 ref={intersectionRef}

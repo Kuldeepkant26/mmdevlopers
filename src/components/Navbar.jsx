@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../css/Navbar.css';
 import logo from '../assets/mm-logo.png';
+import { FaQuestionCircle, FaComments, FaLightbulb, FaBuilding, FaPhone } from 'react-icons/fa';
 
 const THEME_STORAGE_KEY = 'mmdev-theme';
 
@@ -44,10 +45,25 @@ const Navbar = () => {
             : 'light';
     });
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
+        // Check if we're on mobile (where scroll stack is disabled)
+        const isMobile = window.innerWidth <= 768;
+        
         const homeScrollElement = document.querySelector('.home-page');
-        const scrollElement = location.pathname === '/' && homeScrollElement ? homeScrollElement : window;
+        const residentialScrollElement = document.querySelector('.interior-design-page');
+        
+        // On mobile, always use window scroll; on desktop, use container scroll for home/residential
+        let scrollElement = window;
+        if (!isMobile) {
+            if (location.pathname === '/' && homeScrollElement) {
+                scrollElement = homeScrollElement;
+            } else if (location.pathname === '/residential' && residentialScrollElement) {
+                scrollElement = residentialScrollElement;
+            }
+        }
+        
         const getPosition = () => (scrollElement === window ? window.scrollY : scrollElement.scrollTop);
         let animationFrame = null;
 
@@ -63,8 +79,17 @@ const Navbar = () => {
 
         handleScroll();
         scrollElement.addEventListener('scroll', handleScroll, { passive: true });
+        
+        // Also listen to window scroll as fallback
+        if (scrollElement !== window) {
+            window.addEventListener('scroll', handleScroll, { passive: true });
+        }
+        
         return () => {
             scrollElement.removeEventListener('scroll', handleScroll);
+            if (scrollElement !== window) {
+                window.removeEventListener('scroll', handleScroll);
+            }
             if (animationFrame) {
                 window.cancelAnimationFrame(animationFrame);
             }
@@ -121,6 +146,28 @@ const Navbar = () => {
         setShowMaintenancePopup(false);
     };
 
+    // Scroll to section handler - works across pages
+    const scrollToSection = (path, sectionId) => {
+        closeSidebar();
+        
+        if (location.pathname === path) {
+            // Already on the page, just scroll
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } else {
+            // Navigate to the page first, then scroll
+            navigate(path);
+            setTimeout(() => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        }
+    };
+
     // Only 4 items shown in navbar on larger screens
     const navbarItems = [
         { name: 'HOME', path: '/' },
@@ -137,15 +184,6 @@ const Navbar = () => {
         { name: 'RESIDENTIAL', path: '/residential' },
         { name: 'COMMERCIAL', path: '/commercial' },
         { name: 'ABOUT', path: '/about' },
-        { 
-            name: 'INVESTOR', 
-            path: '/investor',
-            submenu: [
-                { name: 'Opportunities', path: '/investor/opportunities' },
-                { name: 'Portfolio', path: '/investor/portfolio' }
-            ]
-        },
-        { name: 'NRI-CORNER', path: '/nri-corner' },
     ];
 
     const sidebarItems = [
@@ -162,6 +200,15 @@ const Navbar = () => {
         { name: 'BLOGS & ARTICLES', path: '/blogs' },
         { name: 'CAREER', path: '/career' },
         { name: 'CONTACT US', path: '/contact' },
+    ];
+
+    // Quick links for sidebar - scrolls to sections
+    const quickLinks = [
+        { name: 'FAQ', icon: FaQuestionCircle, path: '/', sectionId: 'faq-section' },
+        { name: 'Testimonials', icon: FaComments, path: '/', sectionId: 'testimonials-section' },
+        { name: 'Our Vision', icon: FaLightbulb, path: '/about', sectionId: 'immersive-vision-section' },
+        { name: 'Our Projects', icon: FaBuilding, path: '/about', sectionId: 'signature-projects-section' },
+        { name: 'Contact Us', icon: FaPhone, path: '/', sectionId: 'cta-section' },
     ];
 
     return (
@@ -246,12 +293,16 @@ const Navbar = () => {
                         ✕
                     </button>
                 </div>
-                <nav className="sidebar-nav">
-                    {sidebarItems.map((item, index) => (
-                        <div key={index} className="sidebar-item">
-                            {clientRouteItems.has(item.name) ? (
-                                <Link 
-                                    to={item.path} 
+                
+                {/* Scrollable Content */}
+                <div className="sidebar-content">
+                    {/* Main Navigation */}
+                    <nav className="sidebar-nav">
+                        {menuItems.map((item, index) => (
+                            <div key={index} className="sidebar-item">
+                                {clientRouteItems.has(item.name) ? (
+                                    <Link 
+                                        to={item.path} 
                                     className="sidebar-link"
                                     onClick={closeSidebar}
                                 >
@@ -294,6 +345,25 @@ const Navbar = () => {
                         </div>
                     ))}
                 </nav>
+
+                {/* Quick Links Section */}
+                <div className="sidebar-quicklinks">
+                    <h4 className="sidebar-quicklinks-title">Quick Links</h4>
+                    {quickLinks.map((link, index) => {
+                        const IconComponent = link.icon;
+                        return (
+                            <button
+                                key={index}
+                                className="sidebar-quicklink"
+                                onClick={() => scrollToSection(link.path, link.sectionId)}
+                            >
+                                <IconComponent className="sidebar-quicklink-icon" />
+                                <span>{link.name}</span>
+                            </button>
+                        );
+                    })}
+                </div>
+                </div>
             </aside>
 
             {/* Maintenance Popup */}
