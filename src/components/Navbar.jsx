@@ -40,9 +40,7 @@ const Navbar = () => {
         if (typeof window === 'undefined') return 'light';
         const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
         if (storedTheme === 'light' || storedTheme === 'dark') return storedTheme;
-        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light';
+        return 'light';
     });
     const location = useLocation();
     const navigate = useNavigate();
@@ -208,7 +206,7 @@ const Navbar = () => {
         { name: 'Testimonials', icon: FaComments, path: '/', sectionId: 'testimonials-section' },
         { name: 'Our Vision', icon: FaLightbulb, path: '/about', sectionId: 'immersive-vision-section' },
         { name: 'Our Projects', icon: FaBuilding, path: '/about', sectionId: 'signature-projects-section' },
-        { name: 'Contact Us', icon: FaPhone, path: '/', sectionId: 'cta-section' },
+        { name: 'Contact Us', icon: FaPhone, path: location.pathname, sectionId: 'footer-contact-section' },
     ];
 
     return (

@@ -107,7 +107,7 @@ const Footer = () => {
                             </ul>
                         </div>
 
-                        <div className="footer-column">
+                        <div className="footer-column" id="footer-contact-section">
                             <h3 className="footer-heading">Contact Us</h3>
                             <ul className="footer-contact">
                                 <li>
@@ -116,7 +116,7 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <FaPhone className="contact-icon" />
-                                    <a href="tel:+911234567890">+91 12345 67890</a>
+                                    <a href="tel:+919733000043">+919733000043</a>
                                 </li>
                                 <li>
                                     <FaMapMarkerAlt className="contact-icon" />
