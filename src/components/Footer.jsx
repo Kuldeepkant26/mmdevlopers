@@ -120,7 +120,7 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <FaMapMarkerAlt className="contact-icon" />
-                                    <span>MM Developers, Sector 62, Noida, UP 201301</span>
+                                    <span>Sector 49, Gurugram, Haryana</span>
                                 </li>
                             </ul>
                         </div>
